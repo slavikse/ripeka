@@ -16,7 +16,7 @@
 
       <ActionItem
         android.position='popup'
-        @tap='reset'
+        @tap='gameReset'
       >
         <Button
           class='reset'
@@ -30,7 +30,7 @@
         v-for='(cell, index) in cells'
         :key='index'
         :text='cell'
-        @tap='move(index)'
+        @tap='makeMove(index)'
         class='cell'
       />
     </WrapLayout>
@@ -45,11 +45,13 @@ export default {
     return {
       // Игровое поле (в линейном представлении).
       cells: [
-        '1', '2', '3',
-        '4', '5', '6',
-        '7', '8', '9',
+        '', '', '',
+        '', '', '',
+        '', '', '',
       ],
       cellsCopy: [],
+      // true: X | false: O
+      sign: true,
     };
   },
 
@@ -58,12 +60,23 @@ export default {
   },
 
   methods: {
-    move(index) {
-      // todo проверка доступности ячейки
-      this.cells.splice(index, 1, 'x');
+    makeMove(index) {
+      if (this.cells[index].length === 0) {
+        const currentSign = this.getCurrentSign();
+        this.cells.splice(index, 1, currentSign);
+        this.changeSign();
+      }
     },
 
-    reset() {
+    getCurrentSign() {
+      return this.sign ? 'X' : 'O';
+    },
+
+    changeSign() {
+      this.sign = !this.sign;
+    },
+
+    gameReset() {
       this.cells = this.cellsCopy;
     },
   },
@@ -88,7 +101,7 @@ export default {
 
   .title {
     margin-left: 10rem;
-    font-size: 28rem;
+    font-size: 26rem;
     color: $lightest;
     font-weight: bold;
   }
