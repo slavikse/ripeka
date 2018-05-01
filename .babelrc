@@ -1,6 +1,6 @@
 {
   "presets": [
-    "env",
+    ["env", {"cacheDirectory": true}],
     "stage-0"
   ],
   "plugins": [
