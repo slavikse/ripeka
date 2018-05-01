@@ -7,24 +7,24 @@ APK файл: https://github.com/slavikse/ripeka/releases
 ``` bash
 
 # Клонирование проекта:
-  $ git clone https://github.com/slavikse/ripeka.git ripeka && cd ripeka
+$ git clone https://github.com/slavikse/ripeka.git ripeka && cd ripeka
 
 # Настройка среды для разработки:
-  * https://nativescript-vue.org/en/docs/getting-started/installation/
-  * https://docs.nativescript.org/start/ns-setup-linux
+* https://nativescript-vue.org/en/docs/getting-started/installation/
+* https://docs.nativescript.org/start/ns-setup-linux
 
 # Установка зависимостей и запуск на мобильном устройстве для отладки:
-  * Устройство должно быть подключено по USB к компьютеру
-    и активирована опция: "Передача файлов через USB".
-  * В разделе "Для разработчиков", должны быть активированы две опции:
-    "Отладка по USB" и "Установка через USB".
-  * Установка зависимостей и запуск проекта для отладки:
-    $ npm i && npm run debug:android
+* Устройство должно быть подключено по USB к компьютеру
+  и активирована опция: "Передача файлов через USB".
+* В разделе "Для разработчиков", должны быть активированы две опции:
+  "Отладка по USB" и "Установка через USB".
+* Установка зависимостей и запуск проекта для отладки:
+  $ npm i && npm run debug:android
 
 # Сборка проекта:
-  $ npm run build:android
-  APK файл находится в директории:
-  dist/platforms/android/app/build/outputs/apk/debug
+$ npm run build:android
+APK файл находится в директории:
+dist/platforms/android/app/build/outputs/apk/debug
 
 ```
 
