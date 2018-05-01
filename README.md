@@ -1,10 +1,11 @@
-# Игра: крестики нолики для Android.
+# Игра: крестики нолики.
 
 ## Скачать свежую версию можно тут:
 APK файл: https://github.com/slavikse/ripeka/releases
 
-## Как начать разработку и как собрать проект:
+## Как начать разработку и собрать проект:
 ``` bash
+### Актуально только для android.
 
 # Клонирование проекта:
 $ git clone https://github.com/slavikse/ripeka.git ripeka && cd ripeka
