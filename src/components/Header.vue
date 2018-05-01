@@ -3,7 +3,7 @@
     <StackLayout orientation="horizontal">
       <Image
         class='logo'
-        src='~/images/ripeka.png'
+        src='res://logo'
       />
 
       <Label

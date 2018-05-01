@@ -2,7 +2,7 @@
   "name": "ripeka",
   "description": "Мобильная игра крестики нолики.",
   "license": "MIT",
-  "readme": "Игра.",
+  "readme": "Мобильная игра крестики нолики.",
   "nativescript": {
     "id": "org.nativescript.application"
   },

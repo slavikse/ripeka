@@ -3,6 +3,6 @@
     "v8Flags": "--expose_gc"
   },
   "main": "app.js",
-  "name": "ripeka",
-  "version": "0.0.1"
+  "name": "Ripeka",
+  "version": "0.1.0"
 }

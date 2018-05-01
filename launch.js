@@ -1,4 +1,4 @@
-const {exec} = require('child_process');
+const { exec } = require('child_process');
 const winston = require('winston-color');
 
 const action = process.argv[2];
