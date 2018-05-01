@@ -1,11 +1,6 @@
 import Vue from 'nativescript-vue';
 import Vuex from 'vuex';
-
-import game from './modules/game';
-
-const modules = {
-  game,
-};
+import modules from './modules';
 
 Vue.use(Vuex);
 
@@ -16,6 +11,7 @@ const store = new Vuex.Store({
   strict: debug,
 });
 
+// Vue.store = store;
 Vue.prototype.$store = store;
 
-module.exports = store;
+export default store;

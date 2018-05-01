@@ -34,7 +34,7 @@ export default {
   lang='scss'
   scoped
 >
-@import "../styles/vars.scss";
+@import '../styles/vars.scss';
 
 .page {
 }

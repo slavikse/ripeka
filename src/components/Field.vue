@@ -35,7 +35,7 @@ export default {
   lang='scss'
   scoped
 >
-@import "../styles/vars.scss";
+@import '../styles/vars.scss';
 
 .field {
   background-color: $light;
@@ -43,7 +43,7 @@ export default {
   .cell {
     height: 33.33333%;
     width: 33.33333%;
-    font-size: 40rem;
+    font-size: 50rem;
     color: $dark;
     font-weight: bold;
     background-color: $lighter;

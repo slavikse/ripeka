@@ -1,6 +1,6 @@
 <template>
   <ActionBar class='header'>
-    <StackLayout orientation="horizontal">
+    <StackLayout orientation='horizontal'>
       <Image
         class='logo'
         src='res://logo'
@@ -18,7 +18,7 @@
       @tap='resetGame'
     >
       <Button
-        text='reset'
+        text='Заново'
         class='reset'
       />
     </ActionItem>
@@ -41,7 +41,7 @@ export default {
   lang='scss'
   scoped
 >
-@import "../styles/vars.scss";
+@import '../styles/vars.scss';
 
 .header {
   background-color: $light;
@@ -53,14 +53,14 @@ export default {
 }
 
 .title {
-  margin-left: 10rem;
-  font-size: 26rem;
+  margin-left: 8rem;
+  font-size: 24rem;
   color: $lightest;
   font-weight: bold;
 }
 
 .reset {
-  font-size: 16rem;
+  font-size: 14rem;
   color: $lightest;
   background-color: $lighter;
 }
