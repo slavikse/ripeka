@@ -1,37 +1,79 @@
 <template>
-  <ActionBar class='header'>
-    <StackLayout orientation='horizontal'>
+  <ActionBar
+    flat='true'
+    class='header'
+  >
+    <!-- logo, letter, title, turn -->
+    <GridLayout
+      columns='36, auto, 2*, 3*'
+      rows='36'
+    >
       <Image
-        class='logo'
+        col='0'
+        row='0'
         src='res://logo'
+        class='logo'
       />
 
       <Label
-        verticalAlignment='center'
-        text='RIPEKA'
+        col='1'
+        row='0'
+        text='R'
+        class='letter'
+      />
+
+      <Label
+        col='2'
+        row='0'
+        text='ipeka'
         class='title'
       />
-    </StackLayout>
 
+      <Label
+        col='3'
+        row='0'
+        verticalAlignment='center'
+        :text='turn'
+        class='turn'
+      />
+    </GridLayout>
+
+    <!-- POPUP ITEMS -->
     <ActionItem
       android.position='popup'
       @tap='resetGame'
-    >
-      <Button
-        text='Заново'
-        class='reset'
-      />
-    </ActionItem>
+      text='Заново'
+    />
+
+    <ActionItem
+      android.position='popup'
+      @tap='logout'
+      text='Выход'
+    />
   </ActionBar>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'Header',
 
   methods: {
     async resetGame() {
       await this.$store.dispatch('game/reset_game');
+    },
+
+    logout() {
+      console.log('logout');
+    },
+  },
+
+  computed: {
+    ...mapState('game', ['sign']),
+
+    turn() {
+      return `Ходит: ${this.sign ? 'Крестик' : 'Нолик'}`;
     },
   },
 };
@@ -48,20 +90,24 @@ export default {
 }
 
 .logo {
-  height: 40rem;
-  width: 40rem;
+  height: 36rem;
+  width: 36rem;
+}
+
+.letter {
+  margin-left: 4rem;
+  font-size: 24rem;
+  font-weight: bold;
+  color: $lightest;
 }
 
 .title {
-  margin-left: 8rem;
   font-size: 24rem;
   color: $lightest;
-  font-weight: bold;
 }
 
-.reset {
-  font-size: 14rem;
+.turn {
+  font-size: 18rem;
   color: $lightest;
-  background-color: $lighter;
 }
 </style>

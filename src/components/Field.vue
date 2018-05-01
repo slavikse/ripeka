@@ -1,5 +1,8 @@
 <template>
-  <WrapLayout class='field'>
+  <WrapLayout
+    v-if='cells.length !== 0'
+    class='field'
+  >
     <Button
       v-for='(cell, index) in cells'
       :key='index'
