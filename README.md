@@ -1,29 +1,31 @@
-# NativeScript-Vue Application
+# Игра: крестики нолики для Android.
 
-> A native application built with NativeScript-Vue
+## Скачать свежую версию можно тут:
+APK файл: https://github.com/slavikse/ripeka/releases
 
-## Usage
-
+## Как начать разработку и как собрать проект:
 ``` bash
-# Install dependencies
-npm install
 
-# Build for production
-npm run build
-npm run build:<platform>
+# Клонирование проекта:
+  $ git clone https://github.com/slavikse/ripeka.git ripeka && cd ripeka
 
-# Build, watch for changes and debug the application
-npm run debug
-npm run debug:<platform>
+# Настройка среды для разработки:
+  * https://nativescript-vue.org/en/docs/getting-started/installation/
+  * https://docs.nativescript.org/start/ns-setup-linux
 
-# Build, watch for changes and run the application
-npm run watch
-npm run watch:<platform>
+# Установка зависимостей и запуск на мобильном устройстве для отладки:
+  * Устройство должно быть подключено по USB к компьютеру
+    и активирована опция: "Передача файлов через USB".
+  * В разделе "Для разработчиков", должны быть активированы две опции:
+    "Отладка по USB" и "Установка через USB".
+  * Установка зависимостей и запуск проекта для отладки:
+    $ npm i && npm run debug:android
 
-# Clean the NativeScript application instance (i.e. rm -rf dist)
-npm run clean
+# Сборка проекта:
+  $ npm run build:android
+  APK файл находится в директории:
+  dist/platforms/android/app/build/outputs/apk/debug
+
 ```
 
-> When invoking the various npm scripts, omitting the platform will attempt to launch `tns` for both platforms, which will only work in a properly configured OSX environment.
-
-For detailed instructions, see https://github.com/nativescript-vue/vue-cli-template
+Подробнее о шаблоне для Vue по ссылке: https://github.com/nativescript-vue/vue-cli-template

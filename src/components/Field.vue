@@ -1,8 +1,5 @@
 <template>
-  <WrapLayout
-    v-if='cells.length !== 0'
-    class='field'
-  >
+  <WrapLayout class='field'>
     <Button
       v-for='(cell, index) in cells'
       :key='index'
@@ -18,6 +15,13 @@ import { mapState } from 'vuex';
 
 export default {
   name: 'Field',
+
+  data() {
+    return {
+      // Исправление странной ошибки, будто бы cell в v-for='cell.. не является реактивной...
+      cell: '',
+    };
+  },
 
   methods: {
     async makeMove(index) {

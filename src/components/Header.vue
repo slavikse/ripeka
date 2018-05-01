@@ -73,7 +73,7 @@ export default {
     ...mapState('game', ['sign']),
 
     turn() {
-      return `Ходит: ${this.sign ? 'Крестик' : 'Нолик'}`;
+      return `Ходит: ${this.sign ? 'крестик' : 'нолик'}`;
     },
   },
 };
@@ -107,7 +107,7 @@ export default {
 }
 
 .turn {
-  font-size: 18rem;
+  font-size: 15rem;
   color: $lightest;
 }
 </style>
