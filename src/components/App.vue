@@ -1,29 +1,6 @@
 <template>
   <Page class='page'>
-    <ActionBar class='header'>
-      <StackLayout orientation="horizontal">
-        <Image
-          class='logo'
-          src='~/images/ripeka.png'
-        />
-
-        <Label
-          verticalAlignment='center'
-          class='title'
-          text='RIPEKA'
-        />
-      </StackLayout>
-
-      <ActionItem
-        android.position='popup'
-        @tap='gameReset'
-      >
-        <Button
-          class='reset'
-          text='reset'
-        />
-      </ActionItem>
-    </ActionBar>
+    <Header/>
 
     <WrapLayout class='field'>
       <Button
@@ -38,47 +15,36 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import Header from './Header.vue';
+
 export default {
-  name: 'Field',
+  name: 'App',
 
-  data() {
-    return {
-      // Игровое поле (в линейном представлении).
-      cells: [
-        '', '', '',
-        '', '', '',
-        '', '', '',
-      ],
-      cellsCopy: [],
-      // true: X | false: O
-      sign: true,
-    };
+  components: {
+    Header,
   },
 
-  mounted() {
-    this.cellsCopy = [...this.cells];
-  },
+  // async mounted() {
+  //   try {
+  //     const posts = await this.axios.get('https://jsonplaceholder.typicode.com/posts/1');
+  //     console.log('posts', posts);
+  //   } catch (err) {
+  //     console.error('get posts', err);
+  //   }
+  // },
 
   methods: {
-    makeMove(index) {
+    async makeMove(index) {
       if (this.cells[index].length === 0) {
-        const currentSign = this.getCurrentSign();
-        this.cells.splice(index, 1, currentSign);
-        this.changeSign();
+        await this.$store.dispatch('game/set_cell', index);
+        await this.$store.dispatch('game/swap_sign');
       }
     },
+  },
 
-    getCurrentSign() {
-      return this.sign ? 'X' : 'O';
-    },
-
-    changeSign() {
-      this.sign = !this.sign;
-    },
-
-    gameReset() {
-      this.cells = this.cellsCopy;
-    },
+  computed: {
+    ...mapState('game', ['cells']),
   },
 };
 </script>
@@ -89,28 +55,6 @@ export default {
 @import "../styles/vars.scss";
 
 .page {
-}
-
-.header {
-  background-color: $light;
-
-  .logo {
-    height: 40rem;
-    width: 40rem;
-  }
-
-  .title {
-    margin-left: 10rem;
-    font-size: 26rem;
-    color: $lightest;
-    font-weight: bold;
-  }
-
-  .reset {
-    font-size: 16rem;
-    color: $lightest;
-    background-color: $lighter;
-  }
 }
 
 .field {

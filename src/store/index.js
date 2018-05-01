@@ -1,9 +1,11 @@
 import Vue from 'nativescript-vue';
 import Vuex from 'vuex';
 
-// import from './modules/';
+import game from './modules/game';
 
-const modules = {};
+const modules = {
+  game,
+};
 
 Vue.use(Vuex);
 
