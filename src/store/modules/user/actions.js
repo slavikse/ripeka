@@ -1,5 +1,5 @@
 export default {
-  // set_cell({ commit }, index) {
-  //   commit('SET_CELL', index);
+  // async set_cell({ commit }, index) {
+  //   await commit('SET_CELL', index);
   // },
 };
