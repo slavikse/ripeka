@@ -1,7 +1,7 @@
 <template>
-  <div class='login'>
-    login
-  </div>
+  <Page class='login'>
+    <Label text='login'/>
+  </Page>
 </template>
 
 <script>
@@ -14,9 +14,8 @@ export default {
   lang='scss'
   scoped
 >
-@import '../styles/vars.scss';
+@import './vars';
 
 .login {
-
 }
 </style>

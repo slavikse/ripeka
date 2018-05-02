@@ -73,7 +73,7 @@ export default {
     ...mapState('game', ['sign']),
 
     turn() {
-      return `Ходит: ${this.sign ? 'крестик' : 'нолик'}`;
+      return `Ходит: ${this.sign ? 'Крестик..' : 'Нолик..'}`;
     },
   },
 };
@@ -83,7 +83,7 @@ export default {
   lang='scss'
   scoped
 >
-@import '../styles/vars.scss';
+@import '../vars';
 
 .header {
   background-color: $light;
@@ -98,16 +98,17 @@ export default {
   margin-left: 4rem;
   font-size: 24rem;
   font-weight: bold;
-  color: $lightest;
+  color: $white;
 }
 
 .title {
   font-size: 24rem;
-  color: $lightest;
+  color: $white;
 }
 
 .turn {
-  font-size: 15rem;
+  font-size: 16rem;
+  font-weight: bold;
   color: $lightest;
 }
 </style>

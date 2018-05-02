@@ -16,15 +16,9 @@ import { mapState } from 'vuex';
 export default {
   name: 'Field',
 
-  data() {
-    return {
-      // Исправление странной ошибки, будто бы cell в v-for='cell.. не является реактивной...
-      cell: '',
-    };
-  },
-
   methods: {
     async makeMove(index) {
+      // Проверка на пустоту ячейки (пустая строка).
       if (this.cells[index].length === 0) {
         await this.$store.dispatch('game/set_cell', index);
         await this.$store.dispatch('game/swap_sign');
@@ -42,7 +36,7 @@ export default {
   lang='scss'
   scoped
 >
-@import '../styles/vars.scss';
+@import '../vars';
 
 .field {
   background-color: $light;

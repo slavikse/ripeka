@@ -5,13 +5,11 @@ import './styles/main.scss';
 import './configure';
 
 import store from './store';
-// import router from './router';
-import App from './components/App.vue';
+import router from './router';
 
 Vue.config.silent = false;
 
 new Vue({
   store,
-  // router,
-  render: h => h(App),
+  router,
 }).$start();

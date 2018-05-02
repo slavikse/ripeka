@@ -21,6 +21,7 @@ $ git clone https://github.com/slavikse/ripeka.git ripeka && cd ripeka
   "Отладка по USB" и "Установка через USB".
 * Установка зависимостей и запуск проекта для отладки:
   $ npm i && npm run debug:android
+* Для работы в сети, на устройстве должен быть включен Интернет.
 
 # Сборка проекта:
 $ npm run build:android

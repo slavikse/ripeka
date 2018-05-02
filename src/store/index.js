@@ -11,7 +11,8 @@ const store = new Vuex.Store({
   strict: debug,
 });
 
-// Vue.store = store;
+Vue.store = store;
+// Чит, чтобы успокоить nativescript-vue.
 Vue.prototype.$store = store;
 
 export default store;
