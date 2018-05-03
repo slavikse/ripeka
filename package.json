@@ -1,16 +1,17 @@
 {
   "name": "ripeka",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Мобильная игра крестики нолики.",
   "author": "slavikse <gslavikse@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack --env.tnsAction build",
-    "build:android": "npm run build -- --env.android",
-    "debug": "webpack --watch --env.tnsAction debug",
-    "debug:android": "npm run debug -- --env.android",
+    "start": "npm run watch -- --env.android",
     "watch": "webpack --watch --env.tnsAction run",
-    "watch:android": "npm run watch -- --env.android",
+    "build": "npm run build:android -- --env.android && npm run replacer",
+    "build:android": "webpack --env.tnsAction build",
+    "replacer": "./replacer.sh",
+    "debug": "npm run debug:android -- --env.android",
+    "debug:android": "webpack --watch --env.tnsAction debug",
     "clean": "rimraf dist"
   },
   "dependencies": {
