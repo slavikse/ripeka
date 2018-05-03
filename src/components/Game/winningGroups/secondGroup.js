@@ -20,7 +20,7 @@ export default function secondGroup({ cells, currentSign, start, step }) {
   // Достигнута 3 ячейка (вертикаль) - переходит на следующий набор.
   // Для победы нужны совпадения 3х ячеек в 3х наборах на тех же позициях.
   for (let i = start; i < cells.length; i++) {
-    const sign = cells[i];
+    const sign = cells[i].sign;
 
     // Сброс совпадений при переходе на вне групповую ячейку.
     // Каждая 3 ячейка (вертикаль) начиная с самой первой - нулевой.

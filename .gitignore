@@ -1,4 +1,4 @@
-node_modules
-dist
-apk
 .idea
+apk
+dist
+node_modules

@@ -1,10 +1,16 @@
+import { deepClone } from '../../../utilities';
+
 export default {
   SET_CELL(state, { index, currentSign }) {
-    state.cells.splice(index, 1, currentSign);
+    state.cells[index].sign = currentSign;
   },
 
-  SWAP_SIGN(state) {
-    state.sign = !state.sign;
+  SWAP_CURRENT_SING(state) {
+    if (state.current_sign === 'x') {
+      state.current_sign = 'o';
+    } else {
+      state.current_sign = 'x';
+    }
   },
 
   INCREMENT_MOVE(state) {
@@ -16,9 +22,9 @@ export default {
   },
 
   RESET_GAME(state) {
-    state.cells = [...state.cells_copy];
+    state.cells = deepClone(state.cells_copy);
+    state.current_sign = 'x';
     state.move = 0;
-    state.sign = true;
     state.is_game_over = false;
   },
 };

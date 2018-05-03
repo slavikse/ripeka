@@ -98,11 +98,11 @@ export default {
   },
 
   computed: {
-    ...mapState('game', ['sign', 'move', 'is_game_over']),
+    ...mapState('game', ['current_sign', 'move', 'is_game_over']),
 
     message() {
-      const sign = this.sign ? 'Крестик' : 'Нолик';
-      return this.is_game_over ? `${sign} победил!` : `Ходит: ${sign}`;
+      const player = this.current_sign === 'x' ? 'Крестик' : 'Нолик';
+      return this.is_game_over ? `${player} победил!` : `Ходит: ${player}`;
     },
   },
 

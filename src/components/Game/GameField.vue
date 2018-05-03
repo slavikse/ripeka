@@ -1,17 +1,23 @@
 <template>
-  <WrapLayout class='field'>
+  <GridLayout
+    columns='*, *, *'
+    rows='*, *, *'
+    class='field'
+  >
     <Button
       v-for='(cell, index) in cells'
-      :key='index'
-      :text='cell'
+      :key='cell.key'
+      :col='cell.col'
+      :row='cell.row'
+      :text='cell.sign'
       @tap='makeMove(index)'
       class='cell'
     />
-  </WrapLayout>
+  </GridLayout>
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapState } from 'vuex';
 import { firstGroup, secondGroup, thirdGroup } from './winningGroups';
 
 export default {
@@ -20,34 +26,30 @@ export default {
   data() {
     return {
       // Исправление странной ошибки, будто бы cell в v-for=cell.. не является реактивной...
-      cell: '',
+      cell: {},
     };
   },
 
   methods: {
     async makeMove(index) {
       // Проверка строки на пустоту = пустая ячейка.
-      if (this.cells[index].length === 0
-        && !this.is_game_over) {
+      if (this.cells[index].sign.length === 0 && !this.is_game_over) {
         await this.$store.dispatch('game/set_cell', index);
 
-        // Для меньшего количества сделанных ходов проверка выигрыша - избыточна.
+        // При меньшем кол-ве ходов выиграть невозможно, поэтому выигрыш не проверяется.
         // Начиная с 5 (0-4) хода появляется возможность победить: 3 - X, 2 - Y.
-        if (this.move >= 4 && this.verifyWinning()) {
-          // todo победный экран с оповещением кто победил.
-          console.log('Победил!', this.current_sign);
-          await this.$store.dispatch('game/game_over');
+        if (this.move >= 4 && this.verify()) {
+          await this.victory();
           return;
         }
 
+        // Поле заполнено. Ходить не куда.
         if (this.move === this.max_move) {
-          // todo экран с оповещением об ничье.
-          console.log('Игра окончена');
-          await this.$store.dispatch('game/game_over');
+          await this.drawGame();
           return;
         }
 
-        await this.$store.dispatch('game/swap_sign');
+        await this.$store.dispatch('game/swap_current_sing');
         await this.$store.dispatch('game/increment_move');
       }
     },
@@ -55,7 +57,7 @@ export default {
     // Проверка победы текущего игрока после его хода на основе
     // сгруппированных данных о всех возможных вариантов ходов.
     // Если одна из групп выдаст выигрыш, то вернет true - Победа!
-    verifyWinning() {
+    verify() {
       const cells = this.cells;
       const currentSign = this.current_sign;
 
@@ -63,11 +65,22 @@ export default {
         || secondGroup({ cells, currentSign, start: 0, step: 2 })
         || thirdGroup({ cells, currentSign });
     },
+
+    // todo победный экран с оповещением кто победил.
+    async victory() {
+      console.log('Победил!', this.current_sign);
+      await this.$store.dispatch('game/game_over');
+    },
+
+    // todo экран с оповещением об ничье.
+    async drawGame() {
+      console.log('Игра окончена');
+      await this.$store.dispatch('game/game_over');
+    },
   },
 
   computed: {
-    ...mapState('game', ['cells', 'move', 'max_move', 'is_game_over']),
-    ...mapGetters('game', ['current_sign']),
+    ...mapState('game', ['cells', 'current_sign', 'move', 'max_move', 'is_game_over']),
   },
 };
 </script>
@@ -83,8 +96,6 @@ export default {
 }
 
 .cell {
-  height: 33.33333%;
-  width: 33.33333%;
   font-size: 50rem;
   color: $dark;
   font-weight: bold;

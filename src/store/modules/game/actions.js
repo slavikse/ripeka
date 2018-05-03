@@ -1,10 +1,10 @@
 export default {
-  async set_cell({ commit, getters }, index) {
-    await commit('SET_CELL', { index, currentSign: getters.current_sign });
+  async set_cell({ commit, state }, index) {
+    await commit('SET_CELL', { index, currentSign: state.current_sign });
   },
 
-  async swap_sign({ commit }) {
-    await commit('SWAP_SIGN');
+  async swap_current_sing({ commit }) {
+    await commit('SWAP_CURRENT_SING');
   },
 
   async increment_move({ commit }) {

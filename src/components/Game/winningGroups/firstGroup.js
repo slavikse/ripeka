@@ -14,7 +14,7 @@ export default function firstGroup({ cells, currentSign }) {
   // Разделение на наборы по 3 ячейки подряд.
   // Достигнута 3 ячейка по горизонтали - переходит на следующий набор.
   for (let i = 0; i < cells.length; i++) {
-    const sign = cells[i];
+    const sign = cells[i].sign;
 
     // Если ячейка - текущего игрока, то засчитывается очко.
     // Для победы нужно 3 очка для одного из наборов, в случае,
