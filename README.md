@@ -27,3 +27,9 @@ apk/ripeka_${timestamp}.apk
 ```
 
 Подробнее о шаблоне для Vue по ссылке: https://github.com/nativescript-vue/vue-cli-template
+
+## Игровое поле:
+![ripeka_field](https://habrastorage.org/webt/xc/jp/tj/xcjptjl_iwbzdw1ufifjnqfpxio.png)
+
+## dev_console:
+![ripeka_dev_console](https://habrastorage.org/webt/vf/bf/bg/vfbfbgwcnkfavpk8_fil-vy-qy0.png)
