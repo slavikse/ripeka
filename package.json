@@ -1,6 +1,6 @@
 {
   "name": "ripeka",
-  "version": "0.2.1",
+  "version": "0.2.4",
   "description": "Мобильная игра крестики нолики.",
   "author": "slavikse <gslavikse@gmail.com>",
   "license": "MIT",
@@ -9,12 +9,13 @@
     "watch": "webpack --watch --env.tnsAction run",
     "build": "npm run build:android -- --env.android && npm run replacer",
     "build:android": "webpack --env.tnsAction build",
-    "replacer": "./replacer.sh",
+    "replacer": "./scripts/replacer.sh",
     "debug": "npm run debug:android -- --env.android",
     "debug:android": "webpack --watch --env.tnsAction debug",
     "clean": "rimraf dist"
   },
   "dependencies": {
+    "nativescript-audio": "^4.3.5",
     "nativescript-theme-core": "^1.0.4",
     "nativescript-vue": "^1.3.1",
     "tns-core-modules": "^4.0.0",

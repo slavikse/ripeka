@@ -1,3 +1,4 @@
 import deepClone from './deepClone';
+import noise from './noise';
 
-export { deepClone };
+export { deepClone, noise };

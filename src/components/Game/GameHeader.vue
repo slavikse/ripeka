@@ -53,7 +53,10 @@ export default {
 
   data() {
     return {
-      additionally: '',
+      intervalID: null,
+      intervalTime: 15000,
+      // todo добавить еще шутеек.
+      // Важно придерживаться общей ширины контента. Не больше, чем есть!
       jokes: [
         'Чтобы не сидеть без денег - я прилег.',
         'Лучше сгореть, чем угаснуть!',
@@ -76,15 +79,24 @@ export default {
         'Большому кораблю - большую кораблиху.',
         'Немой петух по утрам вибрирует.',
         'С водкой все идет хорошо...кроме ног...',
-        'Вошла женщина с формами для выпечки.',
       ],
+      additionally: '',
     };
   },
 
+  mounted() {
+    this.joke();
+    this.intervalID = setInterval(this.joke, this.intervalTime);
+  },
+
+  destroyed() {
+    clearInterval(this.interval);
+  },
+
   methods: {
-    getJoke() {
+    joke() {
       const random = Math.floor(Math.random() * this.jokes.length);
-      return this.jokes[random];
+      this.additionally = this.jokes[random];
     },
 
     async resetGame() {
@@ -107,13 +119,6 @@ export default {
   },
 
   watch: {
-    move: {
-      immediate: true,
-      handler() {
-        this.additionally = this.getJoke();
-      },
-    },
-
     is_game_over() {
       if (this.is_game_over) {
         this.additionally = 'Игра окончена!';
