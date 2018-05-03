@@ -1,14 +1,8 @@
 # Игра: крестики нолики.
 
-## Скачать свежую версию можно тут:
-APK файл: https://github.com/slavikse/ripeka/releases
-
 ## Как начать разработку и собрать проект:
 ``` bash
 ### Актуально только для android.
-
-# Клонирование проекта:
-$ git clone https://github.com/slavikse/ripeka.git ripeka && cd ripeka
 
 # Настройка среды для разработки:
 * https://nativescript-vue.org/en/docs/getting-started/installation/
@@ -22,6 +16,9 @@ $ git clone https://github.com/slavikse/ripeka.git ripeka && cd ripeka
 * Установка зависимостей и запуск проекта для отладки:
   $ npm i && npm run debug:android
 * Для работы в сети, на устройстве должен быть включен Интернет.
+
+# Запуск проекта:
+$ git clone https://github.com/slavikse/ripeka.git ripeka && cd ripeka && npm i && npm run watch:android
 
 # Сборка проекта:
 $ npm run build:android

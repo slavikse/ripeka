@@ -15,41 +15,46 @@ import { mapState, mapGetters } from 'vuex';
 import { firstGroup, secondGroup, thirdGroup } from './winningGroups';
 
 export default {
-  name: 'Field',
+  name: 'GameField',
 
   data() {
     return {
-      // Исправление странной ошибки, будто бы cell в v-for='cell.. не является реактивной...
+      // Исправление странной ошибки, будто бы cell в v-for=cell.. не является реактивной...
       cell: '',
-      // Максимальное кол-во ходов для поля 3*3 (0-8).
-      maxMove: 9,
     };
   },
 
   methods: {
     async makeMove(index) {
       // Проверка строки на пустоту = пустая ячейка.
-      if (this.cells[index].length === 0) {
+      if (this.cells[index].length === 0
+        && !this.is_game_over) {
         await this.$store.dispatch('game/set_cell', index);
-        await this.$store.dispatch('game/increment_move');
 
         // Для меньшего количества сделанных ходов проверка выигрыша - избыточна.
         // Начиная с 5 (0-4) хода появляется возможность победить: 3 - X, 2 - Y.
-        if (this.move > 4 && this.verifyWinning()) {
-          console.log('Победа!!!', this.current_sign);
+        if (this.move >= 4 && this.verifyWinning()) {
+          // todo победный экран с оповещением кто победил.
+          console.log('Победил!', this.current_sign);
+          await this.$store.dispatch('game/game_over');
+          return;
         }
 
-        if (this.move === this.maxMove) {
-          console.log('Ходы закончились');
+        if (this.move === this.max_move) {
+          // todo экран с оповещением об ничье.
+          console.log('Игра окончена');
+          await this.$store.dispatch('game/game_over');
+          return;
         }
 
         await this.$store.dispatch('game/swap_sign');
+        await this.$store.dispatch('game/increment_move');
       }
     },
 
     // Проверка победы текущего игрока после его хода на основе
     // сгруппированных данных о всех возможных вариантов ходов.
-    // Если одна из групп выдаст выигрышь, то вернет true - Победа!
+    // Если одна из групп выдаст выигрыш, то вернет true - Победа!
     verifyWinning() {
       const cells = this.cells;
       const currentSign = this.current_sign;
@@ -61,7 +66,7 @@ export default {
   },
 
   computed: {
-    ...mapState('game', ['cells', 'move', 'sign']),
+    ...mapState('game', ['cells', 'move', 'max_move', 'is_game_over']),
     ...mapGetters('game', ['current_sign']),
   },
 };
@@ -75,14 +80,14 @@ export default {
 
 .field {
   background-color: $light;
+}
 
-  .cell {
-    height: 33.33333%;
-    width: 33.33333%;
-    font-size: 50rem;
-    color: $dark;
-    font-weight: bold;
-    background-color: $lighter;
-  }
+.cell {
+  height: 33.33333%;
+  width: 33.33333%;
+  font-size: 50rem;
+  color: $dark;
+  font-weight: bold;
+  background-color: $lighter;
 }
 </style>

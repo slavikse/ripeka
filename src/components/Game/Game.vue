@@ -1,20 +1,20 @@
 <template>
   <Page class='game'>
-    <Header/>
-    <Field/>
+    <GameHeader/>
+    <GameField/>
   </Page>
 </template>
 
 <script>
-import Header from './Header.vue';
-import Field from './Field.vue';
+import GameHeader from './GameHeader.vue';
+import GameField from './GameField.vue';
 
 export default {
   name: 'Game',
 
   components: {
-    Header,
-    Field,
+    GameHeader,
+    GameField,
   },
 };
 </script>

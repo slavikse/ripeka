@@ -5,19 +5,9 @@ import secondGroup from './secondGroup';
 // X** **X
 // *X* *X*
 // **X X**
-// todo ошибка для 2 группы
+
+// Проверка 1 и 2 наборов.
 export default function thirdGroup({ cells, currentSign }) {
-  // Проверка 1 набора.
-  if (secondGroup({ cells, currentSign, start: 0, step: 3 })) {
-    return true;
-  }
-
-  // Проверка 2 набора.
-  if (secondGroup({ cells, currentSign, start: 2, step: 1 })) {
-    return true;
-  }
-
-  return false;
+  return secondGroup({ cells, currentSign, start: 0, step: 3 })
+    || secondGroup({ cells, currentSign, start: 2, step: 1 });
 }
-
-// todo объединение под ||

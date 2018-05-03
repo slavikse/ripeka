@@ -1,9 +1,9 @@
-import user from './modules/user';
 import game from './modules/game';
+import user from './modules/user';
 
 const modules = {
-  user,
   game,
+  user,
 };
 
 export default modules;

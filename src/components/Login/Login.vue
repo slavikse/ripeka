@@ -14,7 +14,7 @@ export default {
   lang='scss'
   scoped
 >
-@import './vars';
+@import '../vars';
 
 .login {
 }
