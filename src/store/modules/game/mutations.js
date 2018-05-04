@@ -1,30 +1,20 @@
 import { deepClone } from '../../../utilities';
 
 export default {
-  SET_CELL(state, { index, currentSign }) {
-    state.cells[index].sign = currentSign;
+  DEFINE_WINNER(state, sign) {
+    state.winner = sign;
   },
 
-  SWAP_CURRENT_SING(state) {
-    if (state.current_sign === 'x') {
-      state.current_sign = 'o';
-    } else {
-      state.current_sign = 'x';
-    }
+  IS_OVER(state) {
+    state.is_over = true;
   },
 
-  INCREMENT_MOVE(state) {
-    state.move += 1;
-  },
+  RESET(state, rootState) {
+    state.is_over = false;
 
-  GAME_OVER(state) {
-    state.is_game_over = true;
-  },
+    rootState.field.cells = deepClone(rootState.field.copied_cells);
 
-  RESET_GAME(state) {
-    state.cells = deepClone(state.cells_copy);
-    state.current_sign = 'x';
-    state.move = 0;
-    state.is_game_over = false;
+    rootState.player.sign = 'x';
+    rootState.player.move = 0;
   },
 };

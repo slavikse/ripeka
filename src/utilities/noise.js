@@ -21,7 +21,7 @@ function info(args) {
 }
 
 export default async function noise({
-  audio,
+  name,
   loop = false,
   complete = complete,
   error = error,
@@ -30,19 +30,22 @@ export default async function noise({
   try {
     const player = new TNSPlayer();
     const options = {
-      audioFile: audios[audio],
+      audioFile: audios[name],
       loop,
       completeCallback: complete,
       errorCallback: error,
       infoCallback: info,
     };
 
-    player.playFromFile(options);
+    // todo initFromFile
+    // player.playFromFile(options);
+    // player.playFromUrl(options);
   } catch (err) {
     console.error('[TNSPlayer] noise', err);
   }
 }
 
+// todo на второй игре звук пропадает...
 // todo играть треки в несколько дорожек.
 // todo останавить воспроизведение:
 // https://market.nativescript.org/plugins/nativescript-audio#tnsplayer-methods
@@ -54,7 +57,7 @@ export default async function noise({
 //     handler() {
 //       if (this.move === 0) {
 //         setTimeout(() => {
-//           noise({ audio: 'ambient', loop: true });
+//           noise({ name: 'ambient', loop: true });
 //         }, 200);
 //       }
 //     },

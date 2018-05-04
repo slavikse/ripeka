@@ -18,22 +18,22 @@
       <Label
         col='1'
         row='0'
-        :text='message'
-        class='message'
+        :text='title'
+        class='title'
       />
 
       <Label
         col='1'
         row='1'
-        :text='additionally'
-        class='additionally'
+        :text='message'
+        class='message'
       />
     </GridLayout>
 
     <!-- POPUP ITEMS -->
     <ActionItem
       android.position='popup'
-      @tap='resetGame'
+      @tap='reset'
       text='Заново'
     />
 
@@ -53,10 +53,7 @@ export default {
 
   data() {
     return {
-      intervalID: null,
-      intervalTime: 15000,
-      // todo добавить еще шутеек.
-      // Важно придерживаться общей ширины контента. Не больше, чем есть!
+      // При добавлении новой шутки, нужно придерживаться общей ширины контента.
       jokes: [
         'Чтобы не сидеть без денег - я прилег.',
         'Лучше сгореть, чем угаснуть!',
@@ -80,27 +77,37 @@ export default {
         'Немой петух по утрам вибрирует.',
         'С водкой все идет хорошо...кроме ног...',
       ],
-      additionally: '',
+      message: '',
+      runJokesID: null,
+      jokesTime: 15000,
     };
   },
 
   mounted() {
-    this.joke();
-    this.intervalID = setInterval(this.joke, this.intervalTime);
+    this.runJokes();
   },
 
   destroyed() {
-    clearInterval(this.interval);
+    this.stopJokes();
   },
 
   methods: {
-    joke() {
-      const random = Math.floor(Math.random() * this.jokes.length);
-      this.additionally = this.jokes[random];
+    runJokes() {
+      this.joke();
+      this.runJokesID = setInterval(this.joke, this.jokesTime);
     },
 
-    async resetGame() {
-      await this.$store.dispatch('game/reset_game');
+    stopJokes() {
+      clearInterval(this.runJokesID);
+    },
+
+    joke() {
+      const random = Math.floor(Math.random() * this.jokes.length);
+      this.message = this.jokes[random];
+    },
+
+    async reset() {
+      await this.$store.dispatch('game/reset');
     },
 
     // todo
@@ -110,18 +117,34 @@ export default {
   },
 
   computed: {
-    ...mapState('game', ['current_sign', 'move', 'is_game_over']),
+    ...mapState('game', ['winner', 'is_over']),
+    ...mapState('player', ['move', 'sign']),
 
-    message() {
-      const player = this.current_sign === 'x' ? 'Крестик' : 'Нолик';
-      return this.is_game_over ? `${player} победил!` : `Ходит: ${player}`;
+    title() {
+      // if (this.is_over) {
+      //   if (this.winner.length === 0) {
+      //     return 'Ничья.';
+      //   }
+      //
+      //   return `${this.winner} победил!`;
+      // }
+      //
+      // const player = this.sign === 'x' ? 'Крестик' : 'Нолик';
+      // return `Ходит: ${player}`;
+
+      // todo ничья ибо тогда крестик побеждает
+      const player = this.sign === 'x' ? 'Крестик' : 'Нолик';
+      return this.is_over ? `${player} победил!` : `Ходит: ${player}`;
     },
   },
 
   watch: {
-    is_game_over() {
-      if (this.is_game_over) {
-        this.additionally = 'Игра окончена!';
+    is_over() {
+      if (this.is_over) {
+        this.message = 'Игра окончена!';
+        this.stopJokes();
+      } else {
+        this.runJokes();
       }
     },
   },
@@ -143,14 +166,14 @@ export default {
   height: 40rem;
 }
 
-.message {
+.title {
   text-align: center;
   font-size: 16rem;
   font-weight: bold;
   color: $lightest;
 }
 
-.additionally {
+.message {
   text-align: center;
   font-size: 12rem;
   color: $lighter;

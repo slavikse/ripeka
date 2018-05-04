@@ -6,7 +6,7 @@
   >
     <Button
       v-for='(cell, index) in cells'
-      :key='cell.key'
+      :key='cell.id'
       :col='cell.col'
       :row='cell.row'
       :text='cell.sign'
@@ -18,8 +18,26 @@
 
 <script>
 import { mapState } from 'vuex';
-import { noise } from '../../utilities';
-import { firstGroup, secondGroup, thirdGroup } from './winningGroups';
+// import { noise } from '../../utilities';
+import { firstGroup, secondGroup, thirdGroup } from './verifyGroups';
+
+// animation / transition / requestAnimationFrame - нету. :(
+// :style='getStyle'
+// rotateDeg: 0,
+// getStyle() {
+//   return {
+//     transform: `rotate(${this.rotateDeg}deg)`,
+//   };
+// },
+// Каждый кадр за ~16.6ms, что составит ~60fps.
+// intervalID: null,
+// this.intervalID = setInterval(this.rotate, 1000/60);
+// rotate() {
+//   this.rotateDeg += 20;
+// },
+// destroyed() {
+//   clearInterval(this.intervalID);
+// },
 
 export default {
   name: 'GameField',
@@ -33,8 +51,8 @@ export default {
 
   methods: {
     async makeMove(index) {
-      if (this.is_game_over) {
-        noise({ audio: 'cancel' });
+      if (this.is_over) {
+        // noise({ name: 'cancel' });
       } else {
         await this.canMove(index);
       }
@@ -45,29 +63,29 @@ export default {
       if (this.cells[index].sign.length === 0) {
         await this.moving(index);
       } else {
-        noise({ audio: 'cancel' });
+        // noise({ name: 'cancel' });
       }
     },
 
     async moving(index) {
-      noise({ audio: 'moving' });
-      await this.$store.dispatch('game/set_cell', index);
+      // noise({ name: 'moving' });
+      await this.$store.dispatch('field/occupy_cell', index);
 
       // При меньшем кол-ве ходов выиграть невозможно, поэтому выигрыш не проверяется.
-      // Начиная с 5 (0-4) хода появляется возможность победить: 3 - X, 2 - Y.
-      if (this.move >= 4 && this.verify()) {
+      // Начиная с 5 (0-4] хода появляется возможность победить: 3 - X, 2 - Y.
+      if (this.move > 3 && this.verify()) {
         await this.victory();
         return;
       }
 
       // Поле заполнено. Ходить не куда.
       if (this.move === this.max_move) {
-        await this.drawGame();
+        await this.drawnGame();
         return;
       }
 
-      await this.$store.dispatch('game/swap_current_sing');
-      await this.$store.dispatch('game/increment_move');
+      await this.$store.dispatch('player/move');
+      await this.$store.dispatch('player/swap_sing');
     },
 
     // Проверка победы текущего игрока после его хода на основе
@@ -75,32 +93,31 @@ export default {
     // Если одна из групп выдаст выигрыш, то вернет true - Победа!
     verify() {
       const cells = this.cells;
-      const currentSign = this.current_sign;
+      const sign = this.sign;
 
-      return firstGroup({ cells, currentSign })
-        || secondGroup({ cells, currentSign, start: 0, step: 2 })
-        || thirdGroup({ cells, currentSign });
+      return firstGroup({ cells, sign })
+        || secondGroup({ cells, sign, start: 0, step: 2 })
+        || thirdGroup({ cells, sign });
     },
 
     // todo победный экран с оповещением кто победил.
     async victory() {
-      noise({ audio: 'winner' });
-
-      console.log('Победил!', this.current_sign);
-      await this.$store.dispatch('game/game_over');
+      // noise({ name: 'winner' });
+      await this.$store.dispatch('game/define_winner', this.sign);
+      await this.$store.dispatch('game/is_over');
     },
 
     // todo экран с оповещением об ничье.
-    async drawGame() {
-      noise({ audio: 'cancel' });
-
-      console.log('Игра окончена');
-      await this.$store.dispatch('game/game_over');
+    async drawnGame() {
+      // noise({ name: 'cancel' });
+      await this.$store.dispatch('game/is_over');
     },
   },
 
   computed: {
-    ...mapState('game', ['cells', 'current_sign', 'move', 'max_move', 'is_game_over']),
+    ...mapState('field', ['cells']),
+    ...mapState('game', ['is_over']),
+    ...mapState('player', ['move', 'max_move', 'sign']),
   },
 };
 </script>

@@ -8,7 +8,7 @@
 // X** *X* **X
 
 // Принимает сдвиги, что позволило объединиться с 3 выигрышным набором.
-export default function secondGroup({ cells, currentSign, start, step }) {
+export default function secondGroup({ cells, sign, start, step }) {
   // Будет равен 3, если нужные ячейки равны знаку игрока,
   // в этом случае, победа засчитывается за этим игроком.
   let success = 0;
@@ -20,11 +20,9 @@ export default function secondGroup({ cells, currentSign, start, step }) {
   // Достигнута 3 ячейка (вертикаль) - переходит на следующий набор.
   // Для победы нужны совпадения 3х ячеек в 3х наборах на тех же позициях.
   for (let i = start; i < cells.length; i++) {
-    const sign = cells[i].sign;
-
     // Сброс совпадений при переходе на вне групповую ячейку.
     // Каждая 3 ячейка (вертикаль) начиная с самой первой - нулевой.
-    if (sign === currentSign) {
+    if (cells[i].sign === sign) {
       success += 1;
 
       // Защита от переполнения в процессе проверки всех ячеек в группе.
