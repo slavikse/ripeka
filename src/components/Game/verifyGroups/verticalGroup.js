@@ -8,7 +8,7 @@
 // X** *X* **X
 
 // Принимает сдвиги, что позволило объединиться с 3 выигрышным набором.
-export default function secondGroup({ cells, sign, start, step }) {
+export default function verticalGroup({ cells, sign, start, step }) {
   // Будет равен 3, если нужные ячейки равны знаку игрока,
   // в этом случае, победа засчитывается за этим игроком.
   let success = 0;

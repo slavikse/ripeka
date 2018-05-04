@@ -1,3 +1,4 @@
+// import screens from './screens';
 import Game from '../../components/Game';
 import Login from '../../components/Login';
 
@@ -15,6 +16,7 @@ export default [
     component: Login,
     // meta: { auth: false },
   },
+  // ...screens,
   {
     path: '*',
     redirect: '/',

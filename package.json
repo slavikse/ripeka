@@ -1,9 +1,14 @@
 {
   "name": "ripeka",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Мобильная игра крестики нолики.",
   "author": "slavikse <gslavikse@gmail.com>",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/slavikse/ripeka.git"
+  },
+  "private": true,
+  "license": "Apache-2.0",
   "scripts": {
     "start": "npm run watch -- --env.android",
     "watch": "webpack --watch --env.tnsAction run",
@@ -14,6 +19,12 @@
     "debug:android": "webpack --watch --env.tnsAction debug",
     "clean": "rimraf dist"
   },
+  "keywords": [
+    "nativescript",
+    "vue",
+    "android",
+    "tic tac toe"
+  ],
   "dependencies": {
     "nativescript-audio": "^4.3.5",
     "nativescript-theme-core": "^1.0.4",
@@ -47,11 +58,5 @@
     "webpack": "^3.11.0",
     "webpack-synchronizable-shell-plugin": "^0.0.7",
     "winston-color": "^1.0.0"
-  },
-  "keywords": [
-    "nativescript",
-    "vue",
-    "android",
-    "tic tac toe"
-  ]
+  }
 }

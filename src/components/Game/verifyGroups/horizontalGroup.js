@@ -6,7 +6,7 @@
 // XXX *** ***
 // *** XXX ***
 // *** *** XXX
-export default function firstGroup({ cells, sign }) {
+export default function horizontalGroup({ cells, sign }) {
   // Будет равен 3, если нужные ячейки равны знаку игрока,
   // в этом случае, победа засчитывается за этим игроком.
   let success = 0;

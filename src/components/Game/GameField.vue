@@ -19,7 +19,7 @@
 <script>
 import { mapState } from 'vuex';
 // import { noise } from '../../utilities';
-import { firstGroup, secondGroup, thirdGroup } from './verifyGroups';
+import { horizontalGroup, verticalGroup, obliquelyGroup } from './verifyGroups';
 
 // animation / transition / requestAnimationFrame - нету. :(
 // :style='getStyle'
@@ -95,9 +95,9 @@ export default {
       const cells = this.cells;
       const sign = this.sign;
 
-      return firstGroup({ cells, sign })
-        || secondGroup({ cells, sign, start: 0, step: 2 })
-        || thirdGroup({ cells, sign });
+      return horizontalGroup({ cells, sign })
+        || verticalGroup({ cells, sign, start: 0, step: 2 })
+        || obliquelyGroup({ cells, sign });
     },
 
     // todo победный экран с оповещением кто победил.

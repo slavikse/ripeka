@@ -1,5 +1,5 @@
-import firstGroup from './firstGroup';
-import secondGroup from './secondGroup';
-import thirdGroup from './thirdGroup';
+import horizontalGroup from './horizontalGroup';
+import verticalGroup from './verticalGroup';
+import obliquelyGroup from './obliquelyGroup';
 
-export { firstGroup, secondGroup, thirdGroup };
+export { horizontalGroup, verticalGroup, obliquelyGroup };
