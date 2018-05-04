@@ -10,11 +10,12 @@ export default {
   },
 
   RESET(state, rootState) {
+    state.winner = '';
     state.is_over = false;
 
     rootState.field.cells = deepClone(rootState.field.copied_cells);
 
-    rootState.player.sign = 'x';
     rootState.player.move = 0;
+    rootState.player.sign = 'x';
   },
 };

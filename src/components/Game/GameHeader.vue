@@ -76,6 +76,9 @@ export default {
         'Большому кораблю - большую кораблиху.',
         'Немой петух по утрам вибрирует.',
         'С водкой все идет хорошо...кроме ног...',
+        'У меня самый искренний смех… злорадный!',
+        'Где тебя всегда ждут? На рабочем месте.',
+        'Оптимизм — это нехватка информации.',
       ],
       message: '',
       runJokesID: null,
@@ -121,20 +124,43 @@ export default {
     ...mapState('player', ['move', 'sign']),
 
     title() {
-      // if (this.is_over) {
-      //   if (this.winner.length === 0) {
-      //     return 'Ничья.';
-      //   }
-      //
-      //   return `${this.winner} победил!`;
-      // }
-      //
-      // const player = this.sign === 'x' ? 'Крестик' : 'Нолик';
-      // return `Ходит: ${player}`;
+      // Действия: moving | victory | drawnGame.
+      let status = '';
+      let sign = '';
 
-      // todo ничья ибо тогда крестик побеждает
-      const player = this.sign === 'x' ? 'Крестик' : 'Нолик';
-      return this.is_over ? `${player} победил!` : `Ходит: ${player}`;
+      if (this.is_over) {
+        if (this.winner.length === 0) {
+          status = 'drawnGame';
+        } else {
+          status = 'victory';
+          sign = this.winner;
+        }
+      } else {
+        status = 'moving';
+        sign = this.sign;
+      }
+
+      const player = sign === 'x' ? 'Крестик' : 'Нолик';
+      let message = '';
+
+      switch (status) {
+        case 'moving':
+          message = `Ходит: ${player}`;
+          break;
+
+        case 'victory':
+          message = `${player} победил!`;
+          break;
+
+        case 'drawnGame':
+          message = 'Ничья!';
+          break;
+
+        default:
+          console.log('Что то пошло не так!');
+      }
+
+      return message;
     },
   },
 
