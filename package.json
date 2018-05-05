@@ -1,6 +1,6 @@
 {
   "name": "ripeka",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Мобильная игра крестики нолики.",
   "author": "slavikse <gslavikse@gmail.com>",
   "repository": {
@@ -12,12 +12,13 @@
   "scripts": {
     "start": "npm run watch -- --env.android",
     "watch": "webpack --watch --env.tnsAction run",
-    "build": "npm run build:android -- --env.android && npm run replacer",
+    "build": "npm run build:android -- --env.android && npm run replace_apk",
     "build:android": "webpack --env.tnsAction build",
-    "replacer": "./scripts/replacer.sh",
+    "replace_apk": "./scripts/replace_apk.sh",
     "debug": "npm run debug:android -- --env.android",
     "debug:android": "webpack --watch --env.tnsAction debug",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "count_line": "./scripts/count_line.sh"
   },
   "keywords": [
     "nativescript",
@@ -26,10 +27,13 @@
     "tic tac toe"
   ],
   "dependencies": {
+    "axios": "^0.18.0",
     "nativescript-audio": "^4.3.5",
+    "nativescript-localstorage": "^1.1.5",
     "nativescript-theme-core": "^1.0.4",
     "nativescript-vue": "^1.3.1",
-    "tns-core-modules": "^4.0.0",
+    "tns-core-modules": "^3.4.1",
+    "vue-axios": "^2.1.1",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },

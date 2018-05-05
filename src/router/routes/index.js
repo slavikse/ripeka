@@ -6,6 +6,6 @@ export default [
   ...screens,
   {
     path: '*',
-    redirect: '/',
+    redirect: '/login',
   },
 ];

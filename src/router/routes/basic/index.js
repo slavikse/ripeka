@@ -6,7 +6,7 @@ const screens = [
     path: '/',
     name: 'Game',
     component: Game,
-    // meta: { auth: false },
+    meta: { auth: true },
   },
   {
     path: '/login',

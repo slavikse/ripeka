@@ -1,3 +1,7 @@
-// import Vue from 'nativescript-vue';
+import Vue from 'nativescript-vue';
+import 'nativescript-localstorage';
 
-// Vue.use();
+import VueAxios from 'vue-axios';
+import axios from 'axios';
+
+Vue.use(VueAxios, axios);

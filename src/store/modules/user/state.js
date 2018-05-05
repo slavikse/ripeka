@@ -1,3 +1,6 @@
 export default {
-  logged: true,
+  user: {},
+  token: '',
+  // todo false
+  logged: false,
 };
