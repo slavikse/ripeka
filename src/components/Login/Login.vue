@@ -1,25 +1,20 @@
 <template>
   <Page class='login'>
-    <Label text='login'/>
-
-    <TextField
-      v-model='textFieldValue'
-      hint='Enter text...'
-    />
+    <LoginHeader/>
+    <LoginForm/>
   </Page>
 </template>
 
 <script>
+import LoginHeader from './LoginHeader.vue';
+import LoginForm from './LoginForm.vue';
+
 export default {
   name: 'Login',
 
-  data() {
-    return {
-      textFieldValue: '123',
-    };
-  },
-
-  async mounted() {
+  components: {
+    LoginHeader,
+    LoginForm,
   },
 };
 </script>

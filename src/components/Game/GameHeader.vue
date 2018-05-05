@@ -113,9 +113,8 @@ export default {
       await this.$store.dispatch('game/reset');
     },
 
-    // todo
-    logout() {
-      console.log('logout');
+    async logout() {
+      await this.$store.dispatch('user/logout');
     },
   },
 

@@ -17,8 +17,7 @@ const token = localStorage.getItem('token');
 
 // Проверка авторизации.
 if (token) {
-  // todo раскомментировать
-  // store.dispatch('user/logged', token);
+  store.dispatch('user/logged', token);
 }
 
 Vue.store = store;

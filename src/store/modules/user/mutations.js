@@ -1,9 +1,9 @@
 import Vue from 'nativescript-vue';
 
-// function setLocalStorage(user) {
-//   localStorage.setItem('user', JSON.stringify(user));
-//   localStorage.setItem('token', user.token);
-// }
+function setLocalStorage(user, token) {
+  localStorage.setItem('user', JSON.stringify(user));
+  localStorage.setItem('token', token);
+}
 
 function auth(state, user, token) {
   Vue.axios.defaults.headers.common.token = token;
@@ -18,21 +18,22 @@ export default {
     auth(state, user, token);
   },
 
-  // todo
-  //LOGIN(state, { user, token: { token } }) {
-  //  auth(state, user, token);
-  //  setLocalStorage(user);
-  //},
+  LOGIN(state, user) {
+    const token = '9876543210';
+
+    auth(state, user, token);
+    setLocalStorage(user, token);
+  },
 
   // todo
-  //CREATE_USER(state, user) {
-  //  auth(state, user, user.token);
-  //  setLocalStorage(user);
-  //},
+  CREATE_USER(state, user) {
+    auth(state, user, user.token);
+    setLocalStorage(user);
+  },
 
   LOGOUT(state) {
-    // localStorage.removeItem('user');
-    // localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
 
     state.user = {};
     state.token = '';

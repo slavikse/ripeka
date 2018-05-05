@@ -1,4 +1,4 @@
-import Vue from 'nativescript-vue';
+// import Vue from 'nativescript-vue';
 
 export default {
   async logged({ commit }, token) {
@@ -10,14 +10,14 @@ export default {
     }
   },
 
-  // todo
-  // async login({ commit }, { phone, password }) {
-  //   const { data } = await Vue.axios.post('/sign_in', { phone, password });
-  //
-  //   if (data.success) {
-  //     commit('LOGIN', data.body);
-  //   }
-  // },
+  async login({ commit }, body) {
+    // const { data } = await Vue.axios.post('/sign_in', { phone, password });
+    const data = { success: true, body };
+
+    if (data.success) {
+      commit('LOGIN', data.body);
+    }
+  },
 
   async logout({ commit }) {
     await commit('LOGOUT');
