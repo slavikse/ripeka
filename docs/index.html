@@ -1,10 +1,792 @@
 <!DOCTYPE html>
 <html lang='ru'>
 <head>
-  <meta charset='UTF-8'>
-  <title>Title</title>
+  <meta charset='utf-8'>
+  <!-- IE <= 11 -->
+  <meta
+    http-equiv='x-ua-compatible'
+    content='ie=edge'
+  >
+  <meta
+    name='viewport'
+    content='width=device-width, initial-scale=1, shrink-to-fit=no'
+  >
+  <meta
+    name='application-name'
+    content='Ripeka'
+  >
+  <meta
+    name='theme-color'
+    content='#43b883'
+  >
+  <!-- <= 150 символов -->
+  <meta
+    name='description'
+    content='Мобильная игра крестики нолики.'
+  >
+  <meta
+    name='robots'
+    content='index,follow'
+  >
+  <meta
+    name='googlebot'
+    content='index,follow'
+  >
+  <meta
+    property='og:title'
+    content='Ripeka'
+  >
+  <meta
+    property='og:description'
+    content='Мобильная игра крестики нолики'
+  >
+  <!-- todo ссылка на google play -->
+  <meta
+    property='og:url'
+    content='https://github.com/slavikse/ripeka/releases'
+  >
+  <meta
+    property='og:image'
+    content='https://habrastorage.org/webt/5k/an/v1/5kanv1uuhab2w4wirg81mpgx3ta.png'
+  >
+  <meta
+    property='og:type'
+    content='game'
+  >
+  <meta
+    property='og:locale'
+    content='ru_RU'
+  >
+  <link
+    rel='stylesheet'
+    href='css/reset.css'
+  >
+  <link
+    rel='icon'
+    sizes='73x67'
+    href='./images/logo.png'
+  >
+  <title>Ripeka</title>
+
+  <!-- Bootstrap -->
+  <link
+    href='css/bootstrap.min.css'
+    rel='stylesheet'
+  >
+  <!-- Owl Carousel Assets -->
+  <link
+    href='css/owl.carousel.css'
+    rel='stylesheet'
+  >
+  <link
+    href='css/owl.theme.css'
+    rel='stylesheet'
+  >
+  <!-- Pixeden Icon Font -->
+  <link
+    rel='stylesheet'
+    href='css/Pe-icon-7-stroke.css'
+  >
+  <!-- Font Awesome -->
+  <link
+    href='css/font-awesome.min.css'
+    rel='stylesheet'
+  >
+  <!-- PrettyPhoto -->
+  <link
+    href='css/prettyPhoto.css'
+    rel='stylesheet'
+  >
+  <!-- Style -->
+  <link
+    href='css/style.css'
+    rel='stylesheet'
+  >
+  <link
+    href='css/animate.css'
+    rel='stylesheet'
+  >
+  <!-- Responsive CSS -->
+  <link
+    href='css/responsive.css'
+    rel='stylesheet'
+  >
 </head>
+
 <body>
-<h1>Проверка документации на gh-pages!</h1>
+<!-- PRELOADER -->
+<div class='spn_hol'>
+  <div class='spinner'>
+    <div class='bounce1'></div>
+    <div class='bounce2'></div>
+    <div class='bounce3'></div>
+  </div>
+</div>
+<!-- END PRELOADER -->
+
+<!-- =========================
+    START ABOUT US SECTION
+============================== -->
+<section
+  class='header parallax home-parallax page'
+  id='HOME'
+>
+  <h2></h2>
+  <div class='section_overlay'>
+    <nav
+      class='navbar navbar-default navbar-fixed-top'
+      role='navigation'
+    >
+      <div class='container'>
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class='navbar-header'>
+          <button
+            type='button'
+            class='navbar-toggle collapsed'
+            data-toggle='collapse'
+            data-target='#bs-example-navbar-collapse-1'
+          >
+            <span class='sr-only'>Toggle navigation</span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          <a
+            class='navbar-brand'
+            href='#'
+          >
+            <img
+              src='images/logo.png'
+              alt='Logo'
+            >
+          </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div
+          class='collapse navbar-collapse'
+          id='bs-example-navbar-collapse-1'
+        >
+          <ul class='nav navbar-nav navbar-right'>
+            <!-- NAV -->
+            <li><a href='#HOME'>Начало</a></li>
+            <li><a href='#ABOUT'>Обо мне</a></li>
+            <li><a href='#FEATURES'>Возможности</a></li>
+            <li><a href='#SCREENS'>Изображения</a></li>
+            <li><a href='#DOWNLOAD'>Загрузить</a></li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container- -->
+    </nav>
+
+    <div class='container home-container'>
+      <div class='row'>
+        <div class='col-md-12'>
+          <div class='logo text-center'>
+            <!-- LOGO -->
+            <img
+              width='125'
+              height='55'
+              src='images/logo.png'
+              alt=''
+            >
+          </div>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-md-8 col-sm-8'>
+          <div class='home_text'>
+            <!-- TITLE AND DESC -->
+            <h1>Мобильная игра крестики нолики</h1>
+            <p>Авторский дизайн. Возможность играть по интернету!</p>
+
+            <div class='download-btn'>
+              <!-- BUTTON -->
+              <a
+                class='btn home-btn wow fadeInLeft'
+                href='#DOWNLOAD'
+              >
+                Загрузить
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class='col-md-3 col-md-offset-1 col-sm-4'>
+          <div class='home-iphone'>
+            <img
+              src='images/game_field.png'
+              alt='Игровое поле'
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END HEADER SECTION -->
+
+<!-- =========================
+    START ABOUT US SECTION
+============================== -->
+<section
+  class='about page'
+  id='ABOUT'
+>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-10 col-md-offset-1'>
+        <!-- ABOUT US SECTION TITLE-->
+        <div class='section_title'>
+          <h2>Обо мне</h2>
+          <p>Я разносторонний веб разработчик с различными интересами. Увлекаюсь разработкой
+            всего, что придет в голову и ведь приходит! Провожу исследования заинтересовавших
+            технологий. Читаю профессиональную литературу. Пробовал заниматься машинным обучением.
+            Отлично владею веб платформой (js/nodejs/css/html). Красиво танцую! Бегаю когда есть
+            настроение. Каждое утро делаю зарядку когда встану (бывает засиживаю по ночам) уже
+            неского лет. Провел марафон нонстор программирования - продержался 2 дня без сна!
+            Умею сложное в простое! Люблю Linux и терпеть не могу Windows. Редко играю в видео
+            игры. Люблю слушать trance/techno ну и так то всё, что понравится, вплоть от
+            классической музыки и русской поп музыки до репа и русского репа... И вообще еще много
+            всего...</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class='inner_about_area'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-md-6'>
+          <div
+            class='about_phone wow fadeInLeft'
+            data-wow-duration='1s'
+            data-wow-delay='.5s'
+          >
+            <!-- PHONE -->
+            <img
+              src='images/game_moves.png'
+              alt='Игровое поле'
+            >
+          </div>
+        </div>
+        <div
+          class='col-md-6  wow fadeInRight'
+          data-wow-duration='1s'
+          data-wow-delay='.5s'
+        >
+          <!-- TITLE -->
+          <div class='inner_about_title'>
+            <h2>Почему эта игра лучшая <br> для тебя</h2>
+            <p>Ведь она изумительна!
+              Можно поигрывать в нее со случайным соперником когда заскучал.
+              Она настолько элементарна, что расслабляет во время игры!
+              Тут даже думать практически не нужно!</p>
+          </div>
+          <div class='inner_about_desc'>
+
+            <!-- SINGLE DESC -->
+            <div
+              class='single_about_area fadeInUp wow'
+              data-wow-duration='.5s'
+              data-wow-delay='1s'
+            >
+              <!-- ICON -->
+              <div><i class='pe-7s-timer'></i></div>
+              <!-- HEADING DESCRIPTION -->
+              <h3>Занимает минимум времени</h3>
+              <p>Одна игра в среднем от 10 до 15 секунд! Супер быстрая сессионка!
+                Можно за минимальное время на спор обыграть своего друга!
+              </p>
+            </div>
+            <!-- END SINGLE DESC -->
+
+            <!-- SINGLE DESC -->
+            <div
+              class='single_about_area fadeInUp wow'
+              data-wow-duration='.5s'
+              data-wow-delay='1.5s'
+            >
+              <!-- ICON -->
+              <div><i class='pe-7s-stopwatch'></i></div>
+              <!-- HEADING DESCRIPTION -->
+              <h3>Быстрый старт</h3>
+              <p>Нажал и уже в игре! Быстрый подбор случайного соперника среди всех,
+                кто сейчас в сети! Доступна так же игра с другом по приглашению!</p>
+            </div>
+            <!-- END SINGLE DESC -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End About Us -->
+
+<!-- =========================
+    START TESTIMONIAL SECTION
+============================== -->
+<section
+  id='TESTIMONIAL'
+  class='testimonial parallax'
+>
+  <div class='section_overlay'>
+    <div class='container'>
+      <div class='row'>
+        <div class='col-md-12 wow bounceInDown'>
+          <div
+            id='carousel-example-caption-testimonial'
+            class='carousel slide'
+            data-ride='carousel'
+          >
+            <!-- Indicators -->
+            <ol class='carousel-indicators'>
+              <li
+                data-target='#carousel-example-caption-testimonial'
+                data-slide-to='0'
+                class='active'
+              ></li>
+              <li
+                data-target='#carousel-example-caption-testimonial'
+                data-slide-to='1'
+              ></li>
+              <li
+                data-target='#carousel-example-caption-testimonial'
+                data-slide-to='2'
+              ></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class='carousel-inner'>
+              <div class='item active'>
+                <div class='container'>
+                  <div class='row'>
+                    <div class='col-md-12 text-center'>
+                      <!-- IMAGE -->
+                      <img
+                        src='images/client_1.png'
+                        alt=''
+                      >
+                      <div class='testimonial_caption'>
+                        <!-- DESCRIPTION -->
+                        <h2>Dan Harmon</h2>
+                        <h4><span>SR. UI Designer,</span> Dcrazed</h4>
+                        <p>О боже! Это величественное творение покорило мой рассудок!
+                          Я лучший в мире UI дизайнер и мастер своего дела,
+                          но такая простота и лаконичность в дизайне повергла меня в шок!
+                          Друзья, уж поверьте мне с 15 летним стажем в этом деле!
+                          Эта игра заслуживает самых наивысших похвал! ЭТО ШЕДЕВР!
+                          Играю каждую свободную минуту!</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='item'>
+                <div class='container'>
+                  <div class='row'>
+                    <div class='col-md-12 text-center'>
+                      <!-- IMAGE -->
+                      <img
+                        src='images/client_2.png'
+                        alt=''
+                      >
+                      <div class='testimonial_caption'>
+                        <!-- DESCRIPTION -->
+                        <h2>Allie Kingsley</h2>
+                        <h4><span>SR. Content Strategist,</span> Designscrazed</h4>
+                        <p>А-БА-Л-ДЕТЬ! ЁОУ ребятки!!!
+                          Я наконец-то научилась расслабляться и в этом мне
+                          помогает эта игра! Простота во всем!
+                          От начала игры, до результата. Это подкупает.
+                          С удовольствием играю с друзьями из разных городов по интернету!
+                          Это огромное удовольствие, играть в игры детства!
+                          Эта игра позволила мне окунуться в беззаботное детство
+                          и как раньше получать удовольствие от каждой прожитой минуты!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='item'>
+                <div class='container'>
+                  <div class='row'>
+                    <div class='col-md-12 text-center'>
+                      <!-- IMAGE -->
+                      <img
+                        src='images/client_3.png'
+                        alt=''
+                      >
+                      <div class='testimonial_caption'>
+                        <!-- DESCRIPTION -->
+                        <h2>Joel Mchale</h2>
+                        <h4><span>SR. Developer,</span> Treehouse</h4>
+                        <p>ВАУ! Ты видишь моё лицо?! ДА!!! Это я сделал селфи,
+                          когда играл в эту бесподобную игру!
+                          Безметежность и расслабленность пленили меня до беспамятства!
+                          Я бескрайне благодарен разработчику этой игры! СПАСИБО!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END TESTIMONIAL SECTION -->
+
+<!-- =========================
+     START FEATURES
+============================== -->
+<section
+  id='FEATURES'
+  class='features page'
+>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-10 col-md-offset-1'>
+        <!-- FEATURES SECTION TITLE -->
+        <div
+          class='section_title wow fadeIn'
+          data-wow-duration='1s'
+        >
+          <h2>Возможности</h2>
+          <p>Незабываемое проведение свободного времени, позволит воплотить самые безумные и
+            неординарные идеи в жизнь! Спросишь меня: "но как?!" Ответ прост как 2 байта передать!
+            ОТВЛЕЧЕНИЕ! ДА! И в этом весь секрет. Тебе просто нужно отдохнуть, но просто полежать
+            на диване пялившись в зомбо ящик. Тебя он только еще больше нагрузит бесполезной
+            информацией! Нужно отвление. Все отвлекаются от привычного занятия по разному, кто то
+            выпивает, кто то общается с друзьями, а кто то играет! И тут тебе на помощь приходит
+            эта замечательная и очень простая игра! Играть можно с любым соперником по всему миру
+            через интернет. Тебя ничто не ограничивает. Быстрая умственная игра отвлечет тебя!
+            Главное не увлекаться и возвращаться в реальную жизнь. Удачи!
+            Думай о своем здоровье, бро!
+          </p>
+        </div>
+        <!-- END FEATURES SECTION TITLE -->
+      </div>
+    </div>
+  </div>
+
+  <div class='feature_inner'>
+    <div class='container'>
+      <div class='row'>
+        <div
+          class='col-md-4 right_no_padding wow fadeInLeft'
+          data-wow-duration='1s'
+        >
+          <!-- FEATURE -->
+
+          <div class='left_single_feature'>
+            <!-- ICON -->
+            <div><span class='pe-7s-like'></span></div>
+
+            <!-- FEATURE HEADING AND DESCRIPTION -->
+            <h3>Креативный дизайн<span>/</span></h3>
+            <p>Простота и лаконичность. Вот в чем секрет успеха!</p>
+          </div>
+          <!-- END SINGLE FEATURE -->
+
+          <!-- FEATURE -->
+          <div class='left_single_feature'>
+            <!-- ICON -->
+            <div><span class='pe-7s-science'></span></div>
+
+            <!-- FEATURE HEADING AND DESCRIPTION -->
+            <h3>Современный вид<span>/</span></h3>
+            <p>Просторный. Спокойный. Харизматичный. Индивидуальный. Простой.</p>
+          </div>
+          <!-- END SINGLE FEATURE -->
+
+          <!-- FEATURE -->
+          <div class='left_single_feature'>
+            <!-- ICON -->
+            <div><span class='pe-7s-look'></span></div>
+
+            <!-- FEATURE HEADING AND DESCRIPTION -->
+            <h3>Минимализм<span>/</span></h3>
+            <p>Только нужные элементы без загромождения. Ничего лишнего, что молго бы помешать
+              игре!</p>
+          </div>
+          <!-- END SINGLE FEATURE -->
+
+        </div>
+        <div class='col-md-4'>
+          <div class='feature_iphone'>
+            <!-- FEATURE PHONE IMAGE -->
+            <img
+              class='wow bounceIn'
+              data-wow-duration='1s'
+              src='images/game_field.png'
+              alt=''
+            >
+          </div>
+        </div>
+        <div
+          class='col-md-4 left_no_padding wow fadeInRight'
+          data-wow-duration='1s'
+        >
+
+          <!-- FEATURE -->
+          <div class='right_single_feature'>
+            <!-- ICON -->
+            <div><span class='pe-7s-monitor'></span></div>
+
+            <!-- FEATURE HEADING AND DESCRIPTION -->
+            <h3><span>/</span>Качественное исполнение</h3>
+            <p>Почему бы тебе самому не убедиться в этом, скачав игру!</p>
+          </div>
+          <!-- END SINGLE FEATURE -->
+
+          <!-- FEATURE -->
+          <div class='right_single_feature'>
+            <!-- ICON -->
+            <div><span class='pe-7s-phone'></span></div>
+
+            <!-- FEATURE HEADING AND DESCRIPTION -->
+            <h3><span>/</span>Responsive Ready</h3>
+            <p>Lorem ipsum dolor, consectetur sed do adipisicing elit, sed do eiusmod tempor
+              incididunt</p>
+          </div>
+          <!-- END SINGLE FEATURE -->
+
+
+          <!-- FEATURE -->
+          <div class='right_single_feature'>
+            <!-- ICON -->
+            <div><span class='pe-7s-gleam'></span></div>
+
+            <!-- FEATURE HEADING AND DESCRIPTION -->
+            <h3><span>/</span>Чистый код</h3>
+            <p>Отрефакторенный, написан максимально простыми функциональными конструкциями.
+              Код в свободном доступе на github под лицензией Apache 2.0</p>
+          </div>
+          <!-- END SINGLE FEATURE -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END FEATURES SECTION -->
+
+<!-- =========================
+     START CALL TO ACTION
+============================== -->
+<div class='call_to_action'>
+  <div class='container'>
+    <div
+      class='row wow fadeInLeftBig'
+      data-wow-duration='1s'
+    >
+      <div class='col-md-9'>
+        <p>Убедился, что игра достойна твоего внимания?! Попробуй ее прямо сейчас! Не откладывай
+          в долгий ящий.</p>
+      </div>
+      <div class='col-md-3'>
+        <a
+          class='btn btn-primary btn-action'
+          href='#'
+          role='button'
+        >ЗАГРУЗИ СЕЙЧАС</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- END CALL TO ACTION -->
+
+<!-- =========================
+     Start APPS SCREEN SECTION
+============================== -->
+<section
+  class='apps_screen page'
+  id='SCREENS'
+>
+  <div class='container'>
+    <div class='row'>
+      <div
+        class='col-md-10 col-md-offset-1 wow fadeInBig'
+        data-wow-duration='1s'
+      >
+        <!-- APPS SCREEN TITLE -->
+        <div class='section_title'>
+          <h2>Скриншоты</h2>
+          <p>WORK IN PROGRESS</p>
+        </div>
+        <!-- END APPS SCREEN TITLE -->
+      </div>
+    </div>
+  </div>
+
+  <div class='screen_slider'>
+    <div
+      id='demo'
+      class='wow bounceInRight'
+      data-wow-duration='1s'
+    >
+      <div
+        id='owl-demo'
+        class='owl-carousel'
+      >
+        <!-- APPS SCREEN IMAGES -->
+        <div class='item'>
+          <a
+            href='images/game_field.png'
+            rel='prettyPhoto[pp_gal]'
+          ><img
+            src='images/game_moves.png'
+            width='60'
+            height='60'
+            alt='APPS SCREEN'
+          /></a>
+        </div>
+        <div class='item'>
+          <a
+            href='images/game_moves.png'
+            rel='prettyPhoto[pp_gal]'
+          ><img
+            src='images/game_moves.png'
+            width='60'
+            height='60'
+            alt='APPS SCREEN'
+          /></a>
+        </div>
+        <div class='item'>
+          <a
+            href='images/logo.png'
+            rel='prettyPhoto[pp_gal]'
+          ><img
+            src='images/logo.png'
+            width='60'
+            height='60'
+            alt='APPS SCREEN'
+          /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENS APPS SCREEN -->
+
+<!-- =========================
+     Start FUN FACTS
+============================== -->
+<section class='fun_facts parallax'>
+  <div class='section_overlay'>
+    <div
+      class='container wow bounceInLeft'
+      data-wow-duration='1s'
+    >
+      <div class='row text-center'>
+        <div class='col-md-3'>
+          <div class='single_fun_facts'>
+            <i class='pe-7s-cloud-download'></i>
+            <h2><span class='counter_num'>37</span> <span>+</span></h2>
+            <p>Загрузок</p>
+          </div>
+        </div>
+        <div class='col-md-3'>
+          <div class='single_fun_facts'>
+            <i class='pe-7s-look'></i>
+            <h2><span class='counter_num'>67</span> <span>+</span></h2>
+            <p>Просмотров</p>
+          </div>
+        </div>
+        <div class='col-md-3'>
+          <div class='single_fun_facts'>
+            <i class='pe-7s-comment'></i>
+            <h2><span class='counter_num'>11</span> <span>+</span></h2>
+            <p>Полученных сообщений</p>
+          </div>
+        </div>
+        <div class='col-md-3'>
+          <div class='single_fun_facts'>
+            <i class='pe-7s-cup'></i>
+            <h2><span class='counter_num'>30</span> <span>+</span></h2>
+            <p>Звёзд</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END FUN FACTS -->
+
+<!-- =========================
+     START DOWNLOAD NOW
+============================== -->
+<section
+  class='download page'
+  id='DOWNLOAD'
+>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-md-10 col-md-offset-1'>
+        <!-- DOWNLOAD NOW SECTION TITLE -->
+        <div class='section_title'>
+          <h2>Загрузи сейчас</h2>
+          <p>Великолепные крестики нолики с изумительно выдержанным авторским дизайном не оставит
+            тебя заскучать, ведь в них можно играть в двоем не только на одном устройстве, но и по
+            сети со случайным соперником или же дать ссылку для игры с другом!</p>
+        </div>
+        <!--END DOWNLOAD NOW SECTION TITLE -->
+      </div>
+    </div>
+  </div>
+
+  <div class='available_store'>
+    <div
+      class='container wow bounceInRight'
+      data-wow-duration='1s'
+    >
+      <div class='col-md-6'>
+        <div class='available_title'>
+          <h2>Доступно на android</h2>
+          <p>Единственная поддерживаемая платформа на данный момент</p>
+        </div>
+      </div>
+
+      <!-- DOWNLOADABLE STORE -->
+      <div class='col-md-6'>
+        <div class='row'>
+          <!-- todo ссылку на приложение в google play -->
+          <a href='https://github.com/slavikse/ripeka/releases'>
+            <div class='single_store'>
+              <i class='fa fa-android'></i>
+              <div class='store_inner'>
+                <h2>ANDROID</h2>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!-- END DOWNLOADABLE STORE -->
+    </div>
+  </div>
+</section>
+<!-- END DOWNLOAD -->
+
+<!-- =========================
+     SCRIPTS
+============================== -->
+<script src='js/jquery.min.js'></script>
+<script src='js/bootstrap.min.js'></script>
+<script src='js/owl.carousel.js'></script>
+<script src='js/jquery.fitvids.js'></script>
+<script src='js/jquery.parallax-1.1.3.js'></script>
+<script src='js/jquery.prettyPhoto.js'></script>
+<script src='js/jquery.ajaxchimp.min.js'></script>
+<script src='js/jquery.ajaxchimp.langs.js'></script>
+<script src='js/wow.min.js'></script>
+<script src='js/waypoints.min.js'></script>
+<script src='js/jquery.counterup.min.js'></script>
+<script src='js/script.js'></script>
 </body>
 </html>
