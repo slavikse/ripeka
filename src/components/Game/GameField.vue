@@ -2,7 +2,7 @@
   <GridLayout
     columns='*, *, *'
     rows='*, *, *'
-    class='field'
+    class='game-field'
   >
     <Button
       v-for='(cell, index) in cells'
@@ -100,16 +100,18 @@ export default {
         || obliquelyGroup({ cells, sign });
     },
 
-    // todo победный экран с оповещением кто победил.
     async victory() {
       // noise({ name: 'winner' });
+      this.$router.push({ name: 'ScreenVictory', params: { winner: this.sign } });
+
       await this.$store.dispatch('game/define_winner', this.sign);
       await this.$store.dispatch('game/is_over');
     },
 
-    // todo экран с оповещением об ничье.
     async drawnGame() {
       // noise({ name: 'cancel' });
+      this.$router.push({ name: 'ScreenDrawnGame' });
+
       await this.$store.dispatch('game/is_over');
     },
   },
@@ -128,7 +130,7 @@ export default {
 >
 @import '../vars';
 
-.field {
+.game-field {
   background-color: $light;
 }
 

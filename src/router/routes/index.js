@@ -1,22 +1,9 @@
-// import screens from './screens';
-import Game from '../../components/Game';
-import Login from '../../components/Login';
+import basic from './basic';
+import screens from './screens';
 
 export default [
-  {
-    path: '/',
-    name: 'Game',
-    component: Game,
-    // meta: { auth: false },
-    // props: false,
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login,
-    // meta: { auth: false },
-  },
-  // ...screens,
+  ...basic,
+  ...screens,
   {
     path: '*',
     redirect: '/',

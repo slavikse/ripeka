@@ -1,12 +1,15 @@
-import { ScreensVictory } from '../../../components/Screens';
+import { ScreenVictory, ScreenDrawnGame } from '../../../components/Screen';
 
 const screens = [
   {
-    path: '/victory',
-    name: 'ScreensVictory',
-    component: ScreensVictory,
-    // meta: { auth: false },
-    // props: false,
+    path: '/screen-victory',
+    name: 'ScreenVictory',
+    component: ScreenVictory,
+  },
+  {
+    path: '/screen-drawn-game',
+    name: 'ScreenDrawnGame',
+    component: ScreenDrawnGame,
   },
 ];
 

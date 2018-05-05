@@ -1,3 +1,4 @@
+import Vue from 'nativescript-vue';
 import { deepClone } from '../../../utilities';
 
 export default {
@@ -17,5 +18,7 @@ export default {
 
     rootState.player.move = 0;
     rootState.player.sign = 'x';
+
+    Vue.router.push({ name: 'Game' });
   },
 };
