@@ -10,6 +10,7 @@
       :col='cell.col'
       :row='cell.row'
       :text='cell.sign'
+      :class='cell.classes'
       @tap='makeMove(index)'
       class='cell'
     />
@@ -34,7 +35,7 @@ export default {
   methods: {
     async makeMove(index) {
       if (this.is_over) {
-        noise({ name: 'cancel' });
+        // noise({ name: 'cancel' });
       } else {
         await this.canMove(index);
       }
@@ -43,14 +44,20 @@ export default {
     async canMove(index) {
       // Проверка строки на пустоту = пустая ячейка.
       if (this.cells[index].sign.length === 0) {
+        // this.taped(index);
         await this.moving(index);
       } else {
         // noise({ name: 'cancel' });
       }
     },
 
+    async taped(index) {
+      await this.$store.dispatch('field/taped', index);
+    },
+
     async moving(index) {
-      // noise({ name: 'moving' });
+      noise({ name: 'moving' });
+
       await this.$store.dispatch('field/occupy_cell', index);
 
       // При меньшем кол-ве ходов выиграть невозможно, поэтому выигрыш не проверяется.
@@ -121,5 +128,19 @@ export default {
   color: $dark;
   font-weight: bold;
   background-color: $lighter;
+}
+
+.taped {
+  animation: showing 0.04s;
+}
+
+@keyframes showing {
+  0% {
+    transform: scale(0.98);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 </style>

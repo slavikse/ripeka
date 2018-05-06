@@ -20,26 +20,27 @@ function info(args) {
   console.log('[TNSPlayer] info', JSON.stringify(args));
 }
 
-export default function noise({
+export default async function noise({
   name,
   loop = false,
   complete = complete,
   error = error,
   info = info,
 }) {
-  try {
-    const player = new TNSPlayer();
-    const options = {
-      audioFile: audios[name],
-      loop,
-      completeCallback: complete,
-      errorCallback: error,
-      infoCallback: info,
-    };
+  const player = new TNSPlayer();
+  const options = {
+    audioFile: audios[name],
+    loop,
+    completeCallback: complete,
+    errorCallback: error,
+    infoCallback: info,
+  };
 
+  try {
     // todo initFromFile
     // player.playFromFile(options);
-    player.playFromUrl(options);
+    const res = await player.playFromUrl(options);
+    console.log('noise res', res);
   } catch (err) {
     console.error('[TNSPlayer] noise', err);
   }

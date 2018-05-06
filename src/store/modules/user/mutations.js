@@ -30,12 +30,6 @@ export default {
     setLocalStorage(user, token);
   },
 
-  // todo
-  CREATE_USER(state, user) {
-    auth(state, user, user.token);
-    setLocalStorage(user);
-  },
-
   LOGOUT(state) {
     clearLocalStorage();
 

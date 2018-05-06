@@ -55,9 +55,7 @@ export default {
 
   methods: {
     async submit() {
-      if (!this.isCompleted()) {
-        return;
-      }
+      if (!this.isCompleted()) { return; }
 
       try {
         this.isLoading = true;
