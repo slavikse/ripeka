@@ -33,26 +33,28 @@ export default {
   },
 
   methods: {
-    async makeMove(index) {
+    makeMove(index) {
       if (this.is_over) {
         // noise({ name: 'cancel' });
       } else {
-        await this.canMove(index);
+        this.canMove(index);
       }
     },
 
-    async canMove(index) {
+    canMove(index) {
+      const cell = this.cells[index];
+
       // Проверка строки на пустоту = пустая ячейка.
-      if (this.cells[index].sign.length === 0) {
-        // this.taped(index);
-        await this.moving(index);
+      if (cell.sign.length === 0) {
+        this.taped(index);
+        this.moving(index);
       } else {
         // noise({ name: 'cancel' });
       }
     },
 
-    async taped(index) {
-      await this.$store.dispatch('field/taped', index);
+    taped(index) {
+      this.$store.dispatch('field/taped', index);
     },
 
     async moving(index) {
@@ -63,13 +65,13 @@ export default {
       // При меньшем кол-ве ходов выиграть невозможно, поэтому выигрыш не проверяется.
       // Начиная с 5 (0-4] хода появляется возможность победить: 3 - X, 2 - Y.
       if (this.move > 3 && this.verify()) {
-        await this.victory();
+        this.victory();
         return;
       }
 
       // Поле заполнено. Ходить не куда.
       if (this.move === this.max_move) {
-        await this.drawnGame();
+        this.drawnGame();
         return;
       }
 
@@ -89,19 +91,20 @@ export default {
         || obliquelyGroup({ cells, sign });
     },
 
-    async victory() {
+    victory() {
       // noise({ name: 'winner' });
-      this.$router.push({ name: 'ScreenVictory', params: { winner: this.sign } });
 
-      await this.$store.dispatch('game/define_winner', this.sign);
-      await this.$store.dispatch('game/is_over');
+      this.$store.dispatch('game/define_winner', this.sign);
+      this.$store.dispatch('game/is_over');
+
+      this.$router.push({ name: 'ScreenVictory', params: { winner: this.sign } });
     },
 
-    async drawnGame() {
+    drawnGame() {
       // noise({ name: 'cancel' });
       this.$router.push({ name: 'ScreenDrawnGame' });
 
-      await this.$store.dispatch('game/is_over');
+      this.$store.dispatch('game/is_over');
     },
   },
 
@@ -131,7 +134,7 @@ export default {
 }
 
 .taped {
-  animation: showing 0.04s;
+  animation: showing 0.04s ease-in;
 }
 
 @keyframes showing {
