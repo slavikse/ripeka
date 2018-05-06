@@ -104,11 +104,14 @@ const config = (platform, launchArgs) => {
         canPrint: false,
       }),
 
+      // todo для плагина: nativescript-localstorage
+      // ERROR in app.android.js from UglifyJs
+      // Unexpected token: name (localStorageData) [app.android.js:32095,8]
       // Minify JavaScript code
-      new webpack.optimize.UglifyJsPlugin({
-        compress: { warnings: false },
-        output: { comments: false },
-      }),
+      // new webpack.optimize.UglifyJsPlugin({
+      //   compress: { warnings: false },
+      //   output: { comments: false },
+      // }),
 
       // Copy src/assets/**/* to dist/
       new CopyWebpackPlugin([

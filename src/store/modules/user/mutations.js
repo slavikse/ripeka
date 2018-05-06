@@ -5,6 +5,11 @@ function setLocalStorage(user, token) {
   localStorage.setItem('token', token);
 }
 
+function clearLocalStorage() {
+  localStorage.removeItem('user');
+  localStorage.removeItem('token');
+}
+
 function auth(state, user, token) {
   Vue.axios.defaults.headers.common.token = token;
 
@@ -32,8 +37,7 @@ export default {
   },
 
   LOGOUT(state) {
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
+    clearLocalStorage();
 
     state.user = {};
     state.token = '';

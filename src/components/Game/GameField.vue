@@ -18,26 +18,8 @@
 
 <script>
 import { mapState } from 'vuex';
-// import { noise } from '../../utilities';
+import { noise } from '../../utilities';
 import { horizontalGroup, verticalGroup, obliquelyGroup } from './verifyGroups';
-
-// animation / transition / requestAnimationFrame - нету. :(
-// :style='getStyle'
-// rotateDeg: 0,
-// getStyle() {
-//   return {
-//     transform: `rotate(${this.rotateDeg}deg)`,
-//   };
-// },
-// Каждый кадр за ~16.6ms, что составит ~60fps.
-// intervalID: null,
-// this.intervalID = setInterval(this.rotate, 1000/60);
-// rotate() {
-//   this.rotateDeg += 20;
-// },
-// destroyed() {
-//   clearInterval(this.intervalID);
-// },
 
 export default {
   name: 'GameField',
@@ -52,7 +34,7 @@ export default {
   methods: {
     async makeMove(index) {
       if (this.is_over) {
-        // noise({ name: 'cancel' });
+        noise({ name: 'cancel' });
       } else {
         await this.canMove(index);
       }

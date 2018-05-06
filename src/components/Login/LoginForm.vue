@@ -1,12 +1,6 @@
 <template>
-  <GridLayout
-    columns=''
-    rows='auto, auto, 60, 60'
-    class='login-form'
-  >
+  <StackLayout class='login-form'>
     <TextField
-      col='0'
-      row='0'
       hint='Номер телефона'
       keyboardType='phone'
       v-model.trim='phone'
@@ -14,29 +8,31 @@
     />
 
     <TextField
-      col='0'
-      row='1'
       hint='Пароль'
       secure='true'
       v-model.trim='password'
+      @returnPress='submit'
       class='password'
     />
 
-    <Spinner
-      col='0'
-      row='2'
-      class='spinner'
-    />
+    <StackLayout
+      verticalAlignment='center'
+      class='submit-group'
+    >
+      <Spinner
+        v-if='isLoading'
+        horizontalAlignment='center'
+        class='spinner'
+      />
 
-    <Button
-      col='0'
-      row='3'
-      @tap='submit'
-      text='Войти'
-      :disabled='true'
-      class='submit'
-    />
-  </GridLayout>
+      <Button
+        v-else
+        @tap='submit'
+        text='Войти'
+        class='submit'
+      />
+    </StackLayout>
+  </StackLayout>
 </template>
 
 <script>
@@ -53,21 +49,33 @@ export default {
     return {
       phone: '',
       password: '',
+      isLoading: false,
     };
   },
 
   methods: {
     async submit() {
-      setTimeout(() => {
-        try {
-          this.$store.dispatch('user/login', {
-            phone: this.phone,
-            password: this.password,
-          });
-        } catch (err) {
-          console.error('LoginForm submit', err);
-        }
-      }, 1000);
+      if (!this.isCompleted()) {
+        return;
+      }
+
+      try {
+        this.isLoading = true;
+
+        await this.$store.dispatch('user/login', {
+          phone: this.phone,
+          password: this.password,
+        });
+
+        this.$router.push({ name: 'Game' });
+      } catch (err) {
+        console.error('LoginForm submit', err);
+        this.isLoading = false;
+      }
+    },
+
+    isCompleted() {
+      return this.phone.length > 0 && this.password.length > 0;
     },
   },
 };
@@ -80,22 +88,35 @@ export default {
 @import '../vars';
 
 .login-form {
-  margin-top: 20rem;
-  width: 90%;
+  padding: 80% 10rem 10rem;
+  background-color: $light;
+}
+
+.phone,
+.password {
+  border-radius: 2rem;
+  padding-left: 15rem;
+  color: $dark;
+  background-color: $lightest;
 }
 
 .phone {
 }
 
 .password {
+  margin-top: 5rem;
+}
+
+.submit-group {
+  margin-top: 15rem;
+  height: 50rem;
 }
 
 .spinner {
-  margin: 0 auto;
 }
 
 .submit {
-  color: $white;
-  background-color: $lighter;
+  color: $dark;
+  background-color: $lightest;
 }
 </style>

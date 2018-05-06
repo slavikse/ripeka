@@ -11,7 +11,6 @@
         col='0'
         row='0'
         src='res://logo'
-        class='logo'
       />
 
       <Label
@@ -40,15 +39,10 @@ export default {
   background-color: $light;
 }
 
-.logo {
-  width: 40rem;
-  height: 40rem;
-}
-
 .title {
+  padding-left: -50%;
   text-align: center;
-  font-size: 24rem;
-  font-weight: bold;
+  font-size: 26rem;
   color: $lightest;
 }
 </style>

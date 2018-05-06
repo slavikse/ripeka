@@ -1,6 +1,6 @@
 {
   "name": "ripeka",
-  "version": "0.2.9",
+  "version": "0.3.0",
   "description": "Мобильная игра крестики нолики.",
   "author": "slavikse <gslavikse@gmail.com>",
   "repository": {
@@ -32,7 +32,7 @@
     "nativescript-localstorage": "^1.1.5",
     "nativescript-theme-core": "^1.0.4",
     "nativescript-vue": "^1.3.1",
-    "tns-core-modules": "^3.4.1",
+    "tns-core-modules": "^4.0.0",
     "vue-axios": "^2.1.1",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

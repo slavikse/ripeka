@@ -11,12 +11,18 @@ export default {
   },
 
   async login({ commit }, body) {
-    // const { data } = await Vue.axios.post('/sign_in', { phone, password });
-    const data = { success: true, body };
+    await new Promise(async (resolve, reject) => {
+      await setTimeout(async () => {
+        // const { data } = await Vue.axios.post('/sign_in', { phone, password });
+        const data = { success: true, body };
 
-    if (data.success) {
-      commit('LOGIN', data.body);
-    }
+        if (data.success) {
+          commit('LOGIN', data.body);
+        }
+
+        resolve();
+      }, 3000);
+    });
   },
 
   async logout({ commit }) {

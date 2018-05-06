@@ -20,7 +20,7 @@ function info(args) {
   console.log('[TNSPlayer] info', JSON.stringify(args));
 }
 
-export default async function noise({
+export default function noise({
   name,
   loop = false,
   complete = complete,
@@ -39,7 +39,7 @@ export default async function noise({
 
     // todo initFromFile
     // player.playFromFile(options);
-    // player.playFromUrl(options);
+    player.playFromUrl(options);
   } catch (err) {
     console.error('[TNSPlayer] noise', err);
   }
@@ -49,17 +49,3 @@ export default async function noise({
 // todo играть треки в несколько дорожек.
 // todo останавить воспроизведение:
 // https://market.nativescript.org/plugins/nativescript-audio#tnsplayer-methods
-
-// watch: {
-//   // todo тригеррить не так. когда будет на отдельной дорожке.
-//   move: {
-//     immediate: true,
-//     handler() {
-//       if (this.move === 0) {
-//         setTimeout(() => {
-//           noise({ name: 'ambient', loop: true });
-//         }, 200);
-//       }
-//     },
-//   },
-// },
