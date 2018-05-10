@@ -2,13 +2,19 @@
   <StackLayout class='EndGameDrawnGameMain'>
     <Label text='Ничья'/>
 
-    <!-- todo рекламный блок -->
+    <AdsBanner/>
   </StackLayout>
 </template>
 
 <script>
+import { AdsBanner } from '../../Ads';
+
 export default {
   name: 'EndGameDrawnGameMain',
+
+  components: {
+    AdsBanner,
+  },
 };
 </script>
 

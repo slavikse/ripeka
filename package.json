@@ -30,6 +30,7 @@
   ],
   "dependencies": {
     "axios": "^0.18.0",
+    "nativescript-admob": "^1.4.0",
     "nativescript-audio": "^4.3.5",
     "nativescript-localstorage": "^1.1.5",
     "nativescript-theme-core": "^1.0.4",

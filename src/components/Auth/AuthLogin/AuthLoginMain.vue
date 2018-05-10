@@ -8,7 +8,7 @@
 
     <TextField
       v-model.trim='password'
-      @returnPress='submit'
+      @returnPress='login'
       secure='true'
       hint='Пароль'
       class='password'
@@ -16,7 +16,7 @@
 
     <StackLayout
       verticalAlignment='center'
-      class='submit-group'
+      class='stack'
     >
       <Spinner
         v-if='isLoading'
@@ -24,25 +24,34 @@
         class='spinner'
       />
 
-      <Button
-        v-else
-        @tap='submit'
-        text='Войти'
-        class='submit'
-      />
+      <StackLayout v-else>
+        <Button
+          @tap='login'
+          text='Войти'
+          class='login'
+        />
+
+        <Button
+          @tap='registration'
+          text='Перейти к регистрации...'
+          class='registration'
+        />
+      </StackLayout>
     </StackLayout>
 
-    <!-- todo рекламный блок -->
+    <AdsBanner/>
   </StackLayout>
 </template>
 
 <script>
+import { AdsBanner } from '../../Ads';
 import { Spinner } from '../../Helpers';
 
 export default {
   name: 'AuthLoginMain',
 
   components: {
+    AdsBanner,
     Spinner,
   },
 
@@ -55,7 +64,7 @@ export default {
   },
 
   methods: {
-    async submit() {
+    async login() {
       if (!this.isCompleted()) { return; }
 
       try {
@@ -78,6 +87,10 @@ export default {
 
     isCompleted() {
       return this.nickname.length > 0 && this.password.length > 0;
+    },
+
+    registration() {
+      this.$router.push({ name: 'AuthRegistration' });
     },
   },
 };
@@ -109,15 +122,19 @@ export default {
   margin-top: 1rem;
 }
 
-.submit-group {
+.stack {
   margin-top: 10rem;
-  height: 50rem;
 }
 
 .spinner {
 }
 
-.submit {
+.login {
+  color: $dark;
+  background-color: $lightest;
+}
+
+.registration {
   color: $dark;
   background-color: $lightest;
 }
