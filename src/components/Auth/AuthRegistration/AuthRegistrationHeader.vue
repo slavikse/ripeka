@@ -1,7 +1,7 @@
 <template>
   <ActionBar
     flat='true'
-    class='logon-header'
+    class='AuthRegistrationHeader'
   >
     <GridLayout
       columns='40, *'
@@ -16,7 +16,8 @@
       <Label
         col='1'
         row='0'
-        text='Вход'
+        verticalAlignment='center'
+        text='Регистрация'
         class='title'
       />
     </GridLayout>
@@ -25,7 +26,7 @@
 
 <script>
 export default {
-  name: 'LoginHeader',
+  name: 'AuthRegistrationHeader',
 };
 </script>
 
@@ -33,16 +34,16 @@ export default {
   lang='scss'
   scoped
 >
-@import '../vars';
+@import '../../vars';
 
-.logon-header {
+.AuthRegistrationHeader {
   background-color: $light;
 }
 
 .title {
   padding-left: -50%;
   text-align: center;
-  font-size: 26rem;
+  font-size: 22rem;
   color: $lightest;
 }
 </style>

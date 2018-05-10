@@ -1,6 +1,6 @@
 {
   "name": "ripeka",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Мобильная игра крестики нолики.",
   "author": "slavikse <gslavikse@gmail.com>",
   "repository": {
@@ -10,13 +10,15 @@
   "private": true,
   "license": "Apache-2.0",
   "scripts": {
-    "start": "npm run watch -- --env.android",
-    "watch": "webpack --watch --env.tnsAction run",
-    "build": "npm run build:android -- --env.android && npm run replace_apk",
-    "build:android": "webpack --env.tnsAction build",
+    "start": "npm run watch:android",
+    "watch:android": "npm run watch -- --env.android",
+    "watch": "webpack --watch --env.mode=development --env.tnsAction run",
+    "compile": "npm run build:android",
+    "build:android": "npm run build -- --env.android && npm run replace_apk",
+    "build": "webpack --env.mode=production --env.tnsAction build",
     "replace_apk": "./scripts/replace_apk.sh",
-    "debug": "npm run debug:android -- --env.android",
-    "debug:android": "webpack --watch --env.tnsAction debug",
+    "debug:android": "npm run debug -- --env.android",
+    "debug": "webpack --watch --env.mode=development --env.tnsAction debug",
     "clean": "rimraf dist",
     "count_line": "./scripts/count_line.sh"
   },
@@ -32,18 +34,20 @@
     "nativescript-localstorage": "^1.1.5",
     "nativescript-theme-core": "^1.0.4",
     "nativescript-vue": "^1.3.1",
+    "tns-android": "^4.0.1",
     "tns-core-modules": "^4.0.0",
     "vue-axios": "^2.1.1",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
+    "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
@@ -60,7 +64,7 @@
     "sass-loader": "^7.0.1",
     "vue-template-compiler": "^2.5.16",
     "webpack": "^3.11.0",
-    "webpack-synchronizable-shell-plugin": "^0.0.7",
+    "webpack-synchronizable-shell-plugin": "0.0.7",
     "winston-color": "^1.0.0"
   }
 }

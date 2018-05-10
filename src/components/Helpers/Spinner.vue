@@ -2,7 +2,7 @@
   <GridLayout
     :columns='columns'
     :rows='rows'
-    class='spinner'
+    class='Spinner'
   >
     <Label
       col='0'
@@ -34,6 +34,9 @@
  * :size='30' - определяет размеры каждого круга.
  *  (width: 30rem и height: 30rem)
  * :color='red' - определяет цвет кругов.
+ *
+ * Так же есть нативный:
+ * <ActivityIndicator busy="true" @busyChange="onBusyChanged" />
  *
  * Найденные несоответствия с веб платформой:
  * Бывает подергивание анимации.
@@ -184,7 +187,7 @@ export default {
 >
 @import '../vars';
 
-.spinner {
+.Spinner {
 }
 
 .bounce {

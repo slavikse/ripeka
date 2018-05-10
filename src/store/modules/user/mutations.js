@@ -1,5 +1,8 @@
 import Vue from 'nativescript-vue';
 
+// todo WIP
+const token = 'forever';
+
 function setLocalStorage(user, token) {
   localStorage.setItem('user', JSON.stringify(user));
   localStorage.setItem('token', token);
@@ -15,7 +18,7 @@ function auth(state, user, token) {
 
   state.user = user;
   state.token = token;
-  state.logged = true;
+  state.isLogged = true;
 }
 
 export default {
@@ -24,8 +27,11 @@ export default {
   },
 
   LOGIN(state, user) {
-    const token = '9876543210';
+    auth(state, user, token);
+    setLocalStorage(user, token);
+  },
 
+  REGISTRATION(state, user) {
     auth(state, user, token);
     setLocalStorage(user, token);
   },
@@ -35,8 +41,8 @@ export default {
 
     state.user = {};
     state.token = '';
-    state.logged = false;
+    state.isLogged = false;
 
-    Vue.router.push({ name: 'Login' });
+    Vue.router.push({ name: 'AuthLogin' });
   },
 };

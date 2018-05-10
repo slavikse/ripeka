@@ -1,3 +1,1 @@
-import Game from './Game.vue';
-
-export default Game;
+export Game from './Game.vue';

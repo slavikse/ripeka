@@ -1,7 +1,7 @@
 <template>
   <ActionBar
     flat='true'
-    class='screen-drawn-game-header'
+    class='EndGameDrawnGameHeader'
   >
     <GridLayout
       columns='40, *'
@@ -40,7 +40,7 @@
 
 <script>
 export default {
-  name: 'ScreenDrawnGameHeader',
+  name: 'EndGameDrawnGameHeader',
 
   methods: {
     async reset() {
@@ -60,7 +60,7 @@ export default {
 >
 @import '../../vars';
 
-.screen-drawn-game-header {
+.EndGameDrawnGameHeader {
   background-color: $light;
 }
 

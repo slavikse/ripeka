@@ -1,4 +1,4 @@
-// import Vue from 'nativescript-vue';
+import Vue from 'nativescript-vue';
 
 export default {
   async logged({ commit }, token) {
@@ -11,18 +11,21 @@ export default {
   },
 
   async login({ commit }, body) {
-    await new Promise(async (resolve, reject) => {
-      await setTimeout(async () => {
-        // const { data } = await Vue.axios.post('/sign_in', { phone, password });
-        const data = { success: true, body };
+    const { data } = await Vue.axios.post('/Auth', body);
+    delete body.password;
 
-        if (data.success) {
-          commit('LOGIN', data.body);
-        }
+    if (data.success) {
+      commit('LOGIN', body);
+    }
+  },
 
-        resolve();
-      }, 3000);
-    });
+  async registration({ commit }, body) {
+    const { data } = await Vue.axios.post('/users', body);
+    delete body.password;
+
+    if (data.success) {
+      commit('REGISTRATION', body);
+    }
   },
 
   async logout({ commit }) {

@@ -1,11 +1,13 @@
-import basic from './basic';
-import screens from './screens';
+import Auth from './Auth';
+import EndGame from './EndGame';
+import Game from './Game';
 
 export default [
-  ...basic,
-  ...screens,
+  ...Auth,
+  ...EndGame,
+  Game,
   {
     path: '*',
-    redirect: '/login',
+    redirect: '/Game',
   },
 ];

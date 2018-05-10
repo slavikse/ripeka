@@ -1,7 +1,7 @@
 <template>
   <ActionBar
     flat='true'
-    class='game-header'
+    class='GameHeader'
   >
     <GridLayout
       columns='40, *'
@@ -183,7 +183,7 @@ export default {
 >
 @import '../vars';
 
-.game-header {
+.GameHeader {
   background-color: $light;
 }
 

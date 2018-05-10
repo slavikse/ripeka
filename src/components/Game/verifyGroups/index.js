@@ -1,5 +1,3 @@
-import horizontalGroup from './horizontalGroup';
-import verticalGroup from './verticalGroup';
-import obliquelyGroup from './obliquelyGroup';
-
-export { horizontalGroup, verticalGroup, obliquelyGroup };
+export horizontalGroup from './horizontalGroup';
+export verticalGroup from './verticalGroup';
+export obliquelyGroup from './obliquelyGroup';

@@ -11,6 +11,8 @@ const NativeScriptVueTarget = require('nativescript-vue-target');
 // Prepare NativeScript application from template (if necessary)
 require('./prepare')();
 
+let mode = 'development';
+
 // Generate platform-specific webpack configuration
 const config = (platform, launchArgs) => {
   winston.info(`Bundling application for ${platform}...`);
@@ -39,11 +41,14 @@ const config = (platform, launchArgs) => {
 
   return {
     target: NativeScriptVueTarget,
+
     entry: path.resolve(__dirname, './src/main.js'),
+
     output: {
       path: path.resolve(__dirname, './dist/app'),
       filename: `app.${platform}.js`,
     },
+
     module: {
       rules: [
         {
@@ -94,13 +99,20 @@ const config = (platform, launchArgs) => {
     externals: NativeScriptVueExternals,
 
     plugins: [
+      new webpack.DefinePlugin({
+        'global.ENV_MODE': JSON.stringify(mode),
+      }),
+
       // Extract CSS to separate file
       new ExtractTextPlugin({ filename: `app.${platform}.css` }),
 
       // Optimize CSS output
       new OptimizeCssAssetsPlugin({
         cssProcessor: require('cssnano'),
-        cssProcessorOptions: { discardComments: { removeAll: true } },
+        cssProcessorOptions: {
+          discardComments: { removeAll: true },
+          normalizeUrl: false,
+        },
         canPrint: false,
       }),
 
@@ -127,7 +139,6 @@ const config = (platform, launchArgs) => {
           blocking: false,
         },
       }),
-
     ],
 
     stats: 'errors-only',
@@ -138,12 +149,13 @@ const config = (platform, launchArgs) => {
       'setImmediate': false,
       'fs': 'empty',
     },
-
   };
 };
 
 // Determine platform(s) and action from webpack env arguments
 module.exports = env => {
+  mode = env.mode;
+
   const action = (!env || !env.tnsAction) ? 'build' : env.tnsAction;
 
   if (!env || (!env.android && !env.ios)) {

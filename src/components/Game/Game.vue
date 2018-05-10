@@ -1,20 +1,20 @@
 <template>
-  <Page class='game'>
+  <Page class='Game'>
     <GameHeader/>
-    <GameField/>
+    <GameMain/>
   </Page>
 </template>
 
 <script>
 import GameHeader from './GameHeader.vue';
-import GameField from './GameField.vue';
+import GameMain from './GameMain.vue';
 
 export default {
   name: 'Game',
 
   components: {
     GameHeader,
-    GameField,
+    GameMain,
   },
 };
 </script>
@@ -25,6 +25,6 @@ export default {
 >
 @import '../vars';
 
-.game {
+.Game {
 }
 </style>

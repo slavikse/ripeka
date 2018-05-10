@@ -1,17 +1,16 @@
 <template>
-  <StackLayout class='login-form'>
+  <StackLayout class='AuthLoginMain'>
     <TextField
-      hint='Номер телефона'
-      keyboardType='phone'
-      v-model.trim='phone'
-      class='phone'
+      v-model.trim='nickname'
+      hint='Ник в игре'
+      class='nickname'
     />
 
     <TextField
-      hint='Пароль'
-      secure='true'
       v-model.trim='password'
       @returnPress='submit'
+      secure='true'
+      hint='Пароль'
       class='password'
     />
 
@@ -32,14 +31,16 @@
         class='submit'
       />
     </StackLayout>
+
+    <!-- todo рекламный блок -->
   </StackLayout>
 </template>
 
 <script>
-import { Spinner } from '../Helpers';
+import { Spinner } from '../../Helpers';
 
 export default {
-  name: 'LoginForm',
+  name: 'AuthLoginMain',
 
   components: {
     Spinner,
@@ -47,7 +48,7 @@ export default {
 
   data() {
     return {
-      phone: '',
+      nickname: '',
       password: '',
       isLoading: false,
     };
@@ -61,19 +62,22 @@ export default {
         this.isLoading = true;
 
         await this.$store.dispatch('user/login', {
-          phone: this.phone,
+          nickname: this.nickname,
           password: this.password,
         });
 
         this.$router.push({ name: 'Game' });
       } catch (err) {
-        console.error('LoginForm submit', err);
+        // todo отправка ошибки в базу
+        console.error('AuthLoginForm submit', err);
+      } finally {
+        // todo popup для сообщении о неполадке.
         this.isLoading = false;
       }
     },
 
     isCompleted() {
-      return this.phone.length > 0 && this.password.length > 0;
+      return this.nickname.length > 0 && this.password.length > 0;
     },
   },
 };
@@ -83,14 +87,14 @@ export default {
   lang='scss'
   scoped
 >
-@import '../vars';
+@import '../../vars';
 
-.login-form {
-  padding: 80% 10rem 10rem;
+.AuthLoginMain {
+  padding: 10rem;
   background-color: $light;
 }
 
-.phone,
+.nickname,
 .password {
   border-radius: 2rem;
   padding-left: 15rem;
@@ -98,15 +102,15 @@ export default {
   background-color: $lightest;
 }
 
-.phone {
+.nickname {
 }
 
 .password {
-  margin-top: 5rem;
+  margin-top: 1rem;
 }
 
 .submit-group {
-  margin-top: 15rem;
+  margin-top: 10rem;
   height: 50rem;
 }
 

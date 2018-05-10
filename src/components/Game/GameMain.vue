@@ -2,7 +2,7 @@
   <GridLayout
     columns='*, *, *'
     rows='*, *, *'
-    class='game-field'
+    class='GameMain'
   >
     <Button
       v-for='(cell, index) in cells'
@@ -23,7 +23,7 @@ import { noise } from '../../utilities';
 import { horizontalGroup, verticalGroup, obliquelyGroup } from './verifyGroups';
 
 export default {
-  name: 'GameField',
+  name: 'GameMain',
 
   data() {
     return {
@@ -102,7 +102,7 @@ export default {
 
     drawnGame() {
       // noise({ name: 'cancel' });
-      this.$router.push({ name: 'ScreenDrawnGame' });
+      this.$router.push({ name: 'EndGameDrawnGame' });
 
       this.$store.dispatch('game/is_over');
     },
@@ -122,7 +122,7 @@ export default {
 >
 @import '../vars';
 
-.game-field {
+.GameMain {
   background-color: $light;
 }
 
@@ -133,17 +133,8 @@ export default {
   background-color: $lighter;
 }
 
+/* @keyframes in utility.scss */
 .taped {
   animation: showing 0.04s ease-in;
-}
-
-@keyframes showing {
-  0% {
-    transform: scale(0.98);
-  }
-
-  100% {
-    transform: scale(1);
-  }
 }
 </style>

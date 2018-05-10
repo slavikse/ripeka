@@ -1,28 +1,21 @@
 import Vue from 'nativescript-vue';
 import Vuex from 'vuex';
 
-import modules from './modules';
+import * as modules from './modules';
 import hooks from './hooks';
 
 Vue.use(Vuex);
 
-const debug = process.env.NODE_ENV !== 'production';
-
-const store = new Vuex.Store({
-  strict: debug,
-  modules,
-});
-
+const strict = global.ENV_MODE === 'development';
+const store = new Vuex.Store({ modules, strict });
 const token = localStorage.getItem('token');
 
 // Проверка авторизации.
-if (token) {
-  store.dispatch('user/logged', token);
-}
+if (token) { store.dispatch('user/logged', token); }
 
-Vue.store = store;
 hooks(modules.constant.state.api_uri);
 
+Vue.store = store;
 // Чит, чтобы успокоить nativescript-vue.
 Vue.prototype.$store = store;
 
