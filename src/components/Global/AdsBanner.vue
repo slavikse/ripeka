@@ -30,6 +30,7 @@ export default {
   },
 
   mounted() {
+    // Без задержки вываливает ошибку.
     this.timerCreateID = setTimeout(this.create, 3000);
   },
 
@@ -40,6 +41,7 @@ export default {
   methods: {
     create() {
       try {
+        // Вываливает неотлавливаемые ошибки.
         admob.createBanner({
           view: 'banner',
           testing: this.isDevelopment,
@@ -48,7 +50,6 @@ export default {
           margins: { bottom: 0 },
         });
       } catch (err) {
-        // todo отправка ошибки в базу
         console.error('ERROR: AdsBanner/create', err);
       }
     },
@@ -59,7 +60,6 @@ export default {
       try {
         admob.hideBanner();
       } catch (err) {
-        // todo отправка ошибки в базу
         console.error('ERROR: AdsBanner/hide', err);
       }
     },

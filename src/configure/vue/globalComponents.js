@@ -1,7 +1,6 @@
 import Vue from 'nativescript-vue';
 
-import { Spinner } from '../../components/Helpers';
-import { AdsBanner } from '../../components/AdsBanner';
+import { Spinner, AdsBanner } from '../../components/Global';
 
 Vue.component('Spinner', Spinner);
 Vue.component('AdsBanner', AdsBanner);
