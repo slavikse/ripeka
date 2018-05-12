@@ -90,20 +90,23 @@ export default {
         || obliquelyGroup({ cells, sign });
     },
 
-    async victory() {
+    victory() {
       // noise({ name: 'winner' });
+
+      this.$router.push({ name: 'EndGameVictory', params: { winner: this.sign } });
 
       this.$store.dispatch('game/determine_winner', this.sign);
       this.$store.dispatch('game/is_over');
-
-      await this.$router.push({ name: 'EndGameVictory', params: { winner: this.sign } });
+      this.$store.dispatch('game/reset');
     },
 
     drawnGame() {
       // noise({ name: 'cancel' });
 
-      this.$store.dispatch('game/is_over');
       this.$router.push({ name: 'EndGameDrawnGame' });
+
+      this.$store.dispatch('game/is_over');
+      this.$store.dispatch('game/reset');
     },
   },
 

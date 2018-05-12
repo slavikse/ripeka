@@ -1,6 +1,7 @@
 <template>
   <StackLayout class='WelcomeMain'>
     <!-- ONLINE -->
+    <!--
     <Label
       v-if='is_logged'
       :text='greeting'
@@ -32,6 +33,7 @@
         class='button'
       />
     </StackLayout>
+    -->
 
     <!-- OFFLINE -->
     <Label
@@ -45,11 +47,13 @@
       class='button'
     />
 
+    <!--
     <Button
       @tap='vsPhone'
       text='Против телефона (в процессе)'
       class='button'
     />
+    -->
 
     <!-- DONATE -->
     <Label
