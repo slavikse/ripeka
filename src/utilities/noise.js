@@ -20,7 +20,7 @@ function info(args) {
   console.log('[TNSPlayer] info', JSON.stringify(args));
 }
 
-export default async function noise({
+export default function noise({
   name,
   loop = false,
   complete = complete,
@@ -39,10 +39,9 @@ export default async function noise({
   try {
     // todo initFromFile
     // player.playFromFile(options);
-    const res = await player.playFromUrl(options);
-    console.log('noise res', res);
+    player.playFromUrl(options);
   } catch (err) {
-    console.error('[TNSPlayer] noise', err);
+    console.error('ERROR: noise/TNSPlayer', err);
   }
 }
 

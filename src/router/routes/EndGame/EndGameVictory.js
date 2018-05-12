@@ -4,5 +4,4 @@ export default {
   path: '/EndGameVictory',
   name: 'EndGameVictory',
   component: EndGameVictory,
-  meta: { auth: true },
 };

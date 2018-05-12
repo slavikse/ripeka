@@ -1,1 +1,2 @@
+import './uncaughtError';
 import './plugins';

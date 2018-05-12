@@ -1,23 +1,17 @@
 <template>
-  <Page class='EndGameVictoryBody'>
+  <StackLayout class='EndGameVictoryMain'>
     <Label text='Победа'/>
 
     <AdsBanner/>
-  </Page>
+  </StackLayout>
 </template>
 
 <script>
-import { AdsBanner } from '../../Ads';
-
 export default {
-  name: 'EndGameVictoryBody',
-
-  components: {
-    AdsBanner,
-  },
+  name: 'EndGameVictoryMain',
 
   mounted() {
-    console.log('params', this.$route.params);
+    console.log('winner', this.$route.params.winner);
   },
 };
 </script>
@@ -28,6 +22,6 @@ export default {
 >
 @import '../../vars';
 
-.EndGameVictoryBody {
+.EndGameVictoryMain {
 }
 </style>

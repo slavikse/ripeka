@@ -7,14 +7,8 @@
 </template>
 
 <script>
-import { AdsBanner } from '../../Ads';
-
 export default {
   name: 'EndGameDrawnGameMain',
-
-  components: {
-    AdsBanner,
-  },
 };
 </script>
 
@@ -22,6 +16,8 @@ export default {
   lang='scss'
   scoped
 >
+@import '../../vars';
+
 .EndGameDrawnGameMain {
 }
 </style>

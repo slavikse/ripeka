@@ -11,3 +11,11 @@ new Vue({
   store,
   router,
 }).$start();
+
+// Список зависимостей на рассмотрение:
+// https://market.nativescript.org/plugins/nativescript-toast
+// https://market.nativescript.org/plugins/nativescript-fontawesome
+// https://market.nativescript.org/plugins/nativescript-audio-ssi
+// https://market.nativescript.org/plugins/nativescript-audio-player
+// https://market.nativescript.org/plugins/nativescript-audio
+// https://market.nativescript.org/plugins/nativescript-sound

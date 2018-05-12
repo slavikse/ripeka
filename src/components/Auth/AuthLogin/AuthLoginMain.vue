@@ -2,7 +2,9 @@
   <StackLayout class='AuthLoginMain'>
     <TextField
       v-model.trim='nickname'
-      hint='Ник в игре'
+      :focus='swapShowedBanner'
+      :blur='swapShowedBanner'
+      hint='Имя'
       class='nickname'
     />
 
@@ -39,24 +41,18 @@
       </StackLayout>
     </StackLayout>
 
-    <AdsBanner/>
+    <AdsBanner v-if='isShowAdsBanner'/>
   </StackLayout>
 </template>
 
 <script>
-import { AdsBanner } from '../../Ads';
-import { Spinner } from '../../Helpers';
-
+// todo запрашивать isLogged и пропускать дальше или перенаправлять на authLogin.
 export default {
   name: 'AuthLoginMain',
 
-  components: {
-    AdsBanner,
-    Spinner,
-  },
-
   data() {
     return {
+      isShowAdsBanner: true,
       nickname: '',
       password: '',
       isLoading: false,
@@ -64,6 +60,12 @@ export default {
   },
 
   methods: {
+    // todo скрывать рекламу, когда ввод1
+    swapShowedBanner() {
+      console.log('focused');
+      this.isShowAdsBanner = false;
+    },
+
     async login() {
       if (!this.isCompleted()) { return; }
 
@@ -78,7 +80,7 @@ export default {
         this.$router.push({ name: 'Game' });
       } catch (err) {
         // todo отправка ошибки в базу
-        console.error('AuthLoginForm submit', err);
+        console.error('ERROR: AuthLoginMain/login', err);
       } finally {
         // todo popup для сообщении о неполадке.
         this.isLoading = false;
@@ -86,7 +88,8 @@ export default {
     },
 
     isCompleted() {
-      return this.nickname.length > 0 && this.password.length > 0;
+      return this.nickname.length > 0
+        && this.password.length > 0;
     },
 
     registration() {
@@ -123,7 +126,7 @@ export default {
 }
 
 .stack {
-  margin-top: 10rem;
+  margin-top: 20rem;
 }
 
 .spinner {

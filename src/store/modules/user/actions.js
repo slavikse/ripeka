@@ -1,17 +1,18 @@
 import Vue from 'nativescript-vue';
 
 export default {
-  async logged({ commit }, token) {
+  logged({ commit }, token) {
     try {
       const user = JSON.parse(localStorage.getItem('user'));
-      await commit('LOGGED', { user, token });
+      commit('LOGGED', { user, token });
     } catch (err) {
-      console.error('logged', err);
+      // todo в базу данных на сервер.
+      console.error('ERROR: user/logged', err);
     }
   },
 
   async login({ commit }, body) {
-    const { data } = await Vue.axios.post('/Auth', body);
+    const { data } = await Vue.axios.post('/auth', body);
     delete body.password;
 
     if (data.success) {
@@ -28,7 +29,7 @@ export default {
     }
   },
 
-  async logout({ commit }) {
-    await commit('LOGOUT');
+  logout({ commit }) {
+    commit('LOGOUT');
   },
 };

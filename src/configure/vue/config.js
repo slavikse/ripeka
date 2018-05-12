@@ -1,12 +1,16 @@
 import Vue from 'nativescript-vue';
 
-Vue.config.productionTip = false;
-Vue.config.silent = global.ENV_MODE === 'production';
+const isProduction = global.ENV_MODE === 'production';
 
-// todo эмитировать ошибку, посмотреть вывод. Отправлять ошибки на сервер.
-// Vue.config.errorHandler = (err, vm, info) => {
-//   console.log('+'.repeat(80));
-//   console.log(err, vm, info);
-//   console.dir(err);
-//   console.log('+'.repeat(80));
-// };
+Vue.config.productionTip = false;
+Vue.config.silent = isProduction;
+
+function errorHandler(err, vm, info) {
+  console.log('Vue errorHandler:', err, info);
+
+  if (isProduction) {
+    // todo отправлять ошибку на сервер
+  }
+}
+
+Vue.config.errorHandler = errorHandler;

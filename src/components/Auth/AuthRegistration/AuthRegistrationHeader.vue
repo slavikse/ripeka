@@ -43,6 +43,7 @@ export default {
 .title {
   padding-left: -50%;
   text-align: center;
+  font-weight: bold;
   font-size: 22rem;
   color: $lightest;
 }

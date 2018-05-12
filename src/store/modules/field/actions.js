@@ -1,9 +1,9 @@
 export default {
-  async occupy_cell({ commit, rootState }, index) {
-    await commit('OCCUPY_CELL', { rootState, index });
+  occupy_cell({ commit, rootState }, index) {
+    commit('OCCUPY_CELL', { rootState, index });
   },
 
-  async taped({ commit }, index) {
-    await commit('TAPED', { index });
+  taped({ commit }, index) {
+    commit('TAPED', { index });
   },
 };

@@ -109,13 +109,14 @@ export default {
       this.message = this.jokes[random];
     },
 
-    async reset() {
-      await this.$store.dispatch('game/reset');
+    reset() {
+      this.$store.dispatch('game/reset');
+      this.$router.push({ name: 'Game' });
     },
 
-    async logout() {
-      await this.$store.dispatch('user/logout');
-      await this.reset();
+    logout() {
+      this.$store.dispatch('game/reset');
+      this.$store.dispatch('user/logout');
     },
   },
 

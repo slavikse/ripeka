@@ -1,8 +1,8 @@
-import Vue from 'nativescript-vue';
+// import Vue from 'nativescript-vue';
 import { deepClone } from '../../../utilities';
 
 export default {
-  DEFINE_WINNER(state, sign) {
+  DETERMINE_WINNER(state, sign) {
     state.winner = sign;
   },
 
@@ -18,7 +18,5 @@ export default {
 
     rootState.player.move = 0;
     rootState.player.sign = 'x';
-
-    Vue.router.push({ name: 'Game' });
   },
 };

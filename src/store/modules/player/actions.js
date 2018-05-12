@@ -1,9 +1,9 @@
 export default {
-  async move({ commit }) {
-    await commit('MOVE');
+  move({ commit }) {
+    commit('MOVE');
   },
 
-  async swap_sing({ commit }) {
-    await commit('SWAP_SING');
+  swap_sing({ commit }) {
+    commit('SWAP_SING');
   },
 };

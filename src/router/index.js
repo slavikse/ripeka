@@ -14,6 +14,6 @@ const router = new VueRouter({
 hooks(router);
 Vue.router = router;
 
-router.replace('/');
+router.replace('/Welcome');
 
 export default router;

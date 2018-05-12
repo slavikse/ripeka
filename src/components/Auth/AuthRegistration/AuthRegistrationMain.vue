@@ -2,7 +2,7 @@
   <StackLayout class='AuthRegistrationMain'>
     <TextField
       v-model.trim='nickname'
-      hint='Ник в игре'
+      hint='Уникальное имя'
       class='nickname'
     />
 
@@ -10,7 +10,7 @@
       v-model.trim='password'
       @returnPress='registration'
       secure='true'
-      hint='Пароль'
+      hint='Надежный пароль'
       class='password'
     />
 
@@ -27,13 +27,13 @@
       <StackLayout v-else>
         <Button
           @tap='registration'
-          text='Регистрация'
+          text='Создать учетную запись'
           class='registration'
         />
 
         <Button
           @tap='login'
-          text='Перейти ко входу...'
+          text='Перейти к входу...'
           class='login'
         />
       </StackLayout>
@@ -44,16 +44,8 @@
 </template>
 
 <script>
-import { AdsBanner } from '../../Ads';
-import { Spinner } from '../../Helpers';
-
 export default {
   name: 'AuthRegistrationMain',
-
-  components: {
-    AdsBanner,
-    Spinner,
-  },
 
   data() {
     return {
@@ -77,8 +69,9 @@ export default {
 
         this.$router.push({ name: 'Game' });
       } catch (err) {
+        // todo обработка ситуации, когда ник занят.
         // todo отправка ошибки в базу
-        console.error('AuthRegistrationForm submit', err);
+        console.error('ERROR: AuthRegistrationMain/registration', err);
       } finally {
         // todo popup для сообщении о неполадке.
         this.isLoading = false;
@@ -123,7 +116,7 @@ export default {
 }
 
 .stack {
-  margin-top: 10rem;
+  margin-top: 20rem;
 }
 
 .spinner {

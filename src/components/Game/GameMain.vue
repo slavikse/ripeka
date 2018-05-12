@@ -19,7 +19,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import { noise } from '../../utilities';
+// import { noise } from '../../utilities';
 import { horizontalGroup, verticalGroup, obliquelyGroup } from './verifyGroups';
 
 export default {
@@ -58,7 +58,7 @@ export default {
     },
 
     async moving(index) {
-      noise({ name: 'moving' });
+      // noise({ name: 'moving' });
 
       await this.$store.dispatch('field/occupy_cell', index);
 
@@ -91,20 +91,20 @@ export default {
         || obliquelyGroup({ cells, sign });
     },
 
-    victory() {
+    async victory() {
       // noise({ name: 'winner' });
 
-      this.$store.dispatch('game/define_winner', this.sign);
+      this.$store.dispatch('game/determine_winner', this.sign);
       this.$store.dispatch('game/is_over');
 
-      this.$router.push({ name: 'ScreenVictory', params: { winner: this.sign } });
+      await this.$router.push({ name: 'EndGameVictory', params: { winner: this.sign } });
     },
 
     drawnGame() {
       // noise({ name: 'cancel' });
-      this.$router.push({ name: 'EndGameDrawnGame' });
 
       this.$store.dispatch('game/is_over');
+      this.$router.push({ name: 'EndGameDrawnGame' });
     },
   },
 

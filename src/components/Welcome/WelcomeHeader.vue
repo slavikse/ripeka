@@ -1,7 +1,7 @@
 <template>
   <ActionBar
     flat='true'
-    class='AuthLoginHeader'
+    class='WelcomeHeader'
   >
     <GridLayout
       columns='40, *'
@@ -17,7 +17,7 @@
         col='1'
         row='0'
         verticalAlignment='center'
-        text='Вход'
+        text='Режимы'
         class='title'
       />
     </GridLayout>
@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  name: 'AuthLoginHeader',
+  name: 'WelcomeHeader',
 };
 </script>
 
@@ -34,9 +34,9 @@ export default {
   lang='scss'
   scoped
 >
-@import '../../vars';
+@import '../vars';
 
-.AuthLoginHeader {
+.WelcomeHeader {
   background-color: $light;
 }
 

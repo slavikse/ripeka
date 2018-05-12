@@ -43,6 +43,6 @@ export default {
     state.token = '';
     state.isLogged = false;
 
-    Vue.router.push({ name: 'AuthLogin' });
+    Vue.router.push({ name: 'Welcome' });
   },
 };

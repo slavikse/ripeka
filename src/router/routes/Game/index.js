@@ -1,8 +1,9 @@
 import { Game } from '../components';
 
-export default {
-  path: '/Game',
-  name: 'Game',
-  component: Game,
-  meta: { auth: true },
-};
+export default [
+  {
+    path: '/Game',
+    name: 'Game',
+    component: Game,
+  },
+];

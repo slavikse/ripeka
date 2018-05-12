@@ -43,12 +43,14 @@ export default {
   name: 'EndGameVictoryHeader',
 
   methods: {
-    async reset() {
-      await this.$store.dispatch('game/reset');
+    reset() {
+      this.$store.dispatch('game/reset');
+      this.$router.push({ name: 'Game' });
     },
 
-    async logout() {
-      await this.$store.dispatch('user/logout');
+    logout() {
+      this.$store.dispatch('game/reset');
+      this.$store.dispatch('user/logout');
     },
   },
 
@@ -80,7 +82,7 @@ export default {
 .title {
   text-align: center;
   font-weight: bold;
-  font-size: 20rem;
+  font-size: 22rem;
   color: $lightest;
 }
 </style>

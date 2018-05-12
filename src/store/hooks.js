@@ -17,10 +17,10 @@ function axiosSetup(apiUrl) {
   Vue.axios.interceptors.response.use((response) => {
     isDevelopment && console.info('Getting Response:', response);
     return response;
-  }, async (err) => {
+  }, (err) => {
     // Если токен устарел или не валиден - разлогинивает.
     if (err.response.status === unAuthCode) {
-      await Vue.store.dispatch('user/logout');
+      Vue.store.dispatch('user/logout');
     }
 
     return Promise.reject(err);

@@ -1,13 +1,13 @@
 export default {
-  async define_winner({ commit }, sign) {
-    await commit('DEFINE_WINNER', sign);
+  determine_winner({ commit }, sign) {
+    commit('DETERMINE_WINNER', sign);
   },
 
-  async is_over({ commit }) {
-    await commit('IS_OVER');
+  is_over({ commit }) {
+    commit('IS_OVER');
   },
 
-  async reset({ commit, rootState }) {
-    await commit('RESET', rootState);
+  reset({ commit, rootState }) {
+    commit('RESET', rootState);
   },
 };
