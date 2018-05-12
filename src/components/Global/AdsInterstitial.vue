@@ -14,7 +14,6 @@ export default {
 
   data() {
     return {
-      timerID: null,
       isDevelopment: global.ENV_MODE === 'development',
       testInterstitialID: 'ca-app-pub-3940256099942544/1033173712',
       realInterstitialID: 'ca-app-pub-5481584611736329/4051590229',
@@ -22,8 +21,7 @@ export default {
   },
 
   mounted() {
-    // Без задержки вываливает ошибку.
-    this.timerID = setTimeout(this.createInterstitial, 0);
+    this.createInterstitial();
   },
 
   destroyed() {
@@ -46,8 +44,6 @@ export default {
     },
 
     hideInterstitial() {
-      clearTimeout(this.timerID);
-
       admob.hideBanner().then(() => {
         console.log('DONE: AdsInterstitial/hideInterstitial');
       }, (err) => {
@@ -62,9 +58,8 @@ export default {
   lang='scss'
   scoped
 >
-.AdsInterstitial {
-}
+@import '../vars';
 
-.spinner {
+.AdsInterstitial {
 }
 </style>

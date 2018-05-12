@@ -35,5 +35,6 @@ export default {
 @import '../../vars';
 
 .EndGameDrawnGameMain {
+  background-color: $light;
 }
 </style>

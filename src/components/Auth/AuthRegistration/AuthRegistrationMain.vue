@@ -1,5 +1,9 @@
 <template>
   <StackLayout class='AuthRegistrationMain'>
+    <!-- Поле ловит на себе событие focus, так как первое в стеке,
+      чтобы предотвратить преждевременное срабатывание hideBanner. -->
+    <TextField class='hide'/>
+
     <TextField
       v-model.trim='nickname'
       @focus='hideBanner'

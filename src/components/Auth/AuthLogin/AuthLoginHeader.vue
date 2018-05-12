@@ -21,12 +21,25 @@
         class='title'
       />
     </GridLayout>
+
+    <!-- POPUP ITEMS -->
+    <ActionItem
+      android.position='popup'
+      @tap='backward'
+      text='Вернуться'
+    />
   </ActionBar>
 </template>
 
 <script>
 export default {
   name: 'AuthLoginHeader',
+
+  methods: {
+    backward() {
+      this.$router.back();
+    },
+  },
 };
 </script>
 
@@ -41,7 +54,6 @@ export default {
 }
 
 .title {
-  padding-left: -50%;
   text-align: center;
   font-weight: bold;
   font-size: 22rem;

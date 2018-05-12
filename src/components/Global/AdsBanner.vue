@@ -71,6 +71,8 @@ export default {
   lang='scss'
   scoped
 >
+@import '../vars';
+
 .AdsBanner {
 }
 

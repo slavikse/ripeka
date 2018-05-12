@@ -1,5 +1,9 @@
 <template>
   <StackLayout class='AuthLoginMain'>
+    <!-- Поле ловит на себе событие focus, так как первое в стеке,
+      чтобы предотвратить преждевременное срабатывание hideBanner. -->
+    <TextField class='hide'/>
+
     <TextField
       v-model.trim='nickname'
       @focus='hideBanner'
@@ -138,11 +142,7 @@ export default {
 .spinner {
 }
 
-.login {
-  color: $dark;
-  background-color: $lightest;
-}
-
+.login,
 .registration {
   color: $dark;
   background-color: $lightest;
