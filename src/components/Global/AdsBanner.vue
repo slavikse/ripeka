@@ -22,8 +22,8 @@ export default {
 
   data() {
     return {
+      timerID: null,
       isDevelopment: global.ENV_MODE === 'development',
-      timerCreateID: null,
       testBannerID: 'ca-app-pub-3940256099942544/6300978111',
       realBannerID: 'ca-app-pub-5481584611736329/6434550290',
     };
@@ -31,37 +31,37 @@ export default {
 
   mounted() {
     // Без задержки вываливает ошибку.
-    this.timerCreateID = setTimeout(this.create, 3000);
+    this.timerID = setTimeout(this.createBanner, 3000);
   },
 
   destroyed() {
-    this.hide();
+    this.hideBanner();
   },
 
   methods: {
-    create() {
-      try {
-        // Вываливает неотлавливаемые ошибки.
-        admob.createBanner({
-          view: 'banner',
-          testing: this.isDevelopment,
-          size: admob.AD_SIZE.SMART_BANNER,
-          androidBannerId: this.isDevelopment ? this.testBannerID : this.realBannerID,
-          margins: { bottom: 0 },
-        });
-      } catch (err) {
-        console.error('ERROR: AdsBanner/create', err);
-      }
+    createBanner() {
+      // Вываливает неотлавливаемые ошибки.
+      admob.createBanner({
+        view: 'banner',
+        testing: this.isDevelopment,
+        size: admob.AD_SIZE.SMART_BANNER,
+        androidBannerId: this.isDevelopment ? this.testBannerID : this.realBannerID,
+        margins: { bottom: 0 },
+      }).then(() => {
+        console.log('DONE: AdsBanner/createBanner');
+      }, (err) => {
+        console.error('ERROR: AdsBanner/createBanner', err);
+      });
     },
 
-    hide() {
-      clearTimeout(this.timerCreateID);
+    hideBanner() {
+      clearTimeout(this.timerID);
 
-      try {
-        admob.hideBanner();
-      } catch (err) {
-        console.error('ERROR: AdsBanner/hide', err);
-      }
+      admob.hideBanner().then(() => {
+        console.log('DONE: AdsBanner/hideBanner');
+      }, (err) => {
+        console.error('ERROR: AdsBanner/hideBanner', err);
+      });
     },
   },
 };

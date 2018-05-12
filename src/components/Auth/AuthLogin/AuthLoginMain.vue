@@ -2,14 +2,14 @@
   <StackLayout class='AuthLoginMain'>
     <TextField
       v-model.trim='nickname'
-      :focus='swapShowedBanner'
-      :blur='swapShowedBanner'
+      @focus='hideBanner'
       hint='Имя'
       class='nickname'
     />
 
     <TextField
       v-model.trim='password'
+      @focus='hideBanner'
       @returnPress='login'
       secure='true'
       hint='Пароль'
@@ -41,29 +41,34 @@
       </StackLayout>
     </StackLayout>
 
-    <AdsBanner v-if='isShowAdsBanner'/>
+    <AdsBanner v-if='isShowBanner'/>
   </StackLayout>
 </template>
 
 <script>
-// todo запрашивать isLogged и пропускать дальше или перенаправлять на authLogin.
 export default {
   name: 'AuthLoginMain',
 
   data() {
     return {
-      isShowAdsBanner: true,
       nickname: '',
       password: '',
       isLoading: false,
+      isShowBanner: true,
     };
   },
 
+  destroyed() {
+    this.hideBanner();
+  },
+
   methods: {
-    // todo скрывать рекламу, когда ввод1
-    swapShowedBanner() {
-      console.log('focused');
-      this.isShowAdsBanner = false;
+    hideBanner() {
+      this.isShowBanner = false;
+    },
+
+    showBanner() {
+      this.isShowBanner = true;
     },
 
     async login() {
@@ -71,6 +76,7 @@ export default {
 
       try {
         this.isLoading = true;
+        this.showBanner();
 
         await this.$store.dispatch('user/login', {
           nickname: this.nickname,

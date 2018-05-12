@@ -17,7 +17,7 @@
         col='1'
         row='0'
         verticalAlignment='center'
-        text='Режимы'
+        text='Меню'
         class='title'
       />
     </GridLayout>

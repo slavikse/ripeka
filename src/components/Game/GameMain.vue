@@ -59,7 +59,6 @@ export default {
 
     async moving(index) {
       // noise({ name: 'moving' });
-
       await this.$store.dispatch('field/occupy_cell', index);
 
       // При меньшем кол-ве ходов выиграть невозможно, поэтому выигрыш не проверяется.

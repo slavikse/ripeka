@@ -6,17 +6,25 @@
       class='online'
     />
 
-    <Button
-      @tap='login'
-      text='Вход'
-      class='button'
-    />
+    <StackLayout v-if='isLogged'>
+      <Label
+        :text='greeting'
+        class='greeting'
+      />
+    </StackLayout>
+    <StackLayout v-else>
+      <Button
+        @tap='login'
+        text='Вход'
+        class='button'
+      />
 
-    <Button
-      @tap='registration'
-      text='Регистрация'
-      class='button'
-    />
+      <Button
+        @tap='registration'
+        text='Регистрация'
+        class='button'
+      />
+    </StackLayout>
 
     <!-- OFFLINE -->
     <Label
@@ -25,28 +33,65 @@
     />
 
     <Button
-      @tap='game'
+      @tap='vsMan'
       text='Против человека'
       class='button'
     />
 
-    <!--
     <Button
-      @tap='game'
-      text='Против устройства'
+      @tap='vsPhone'
+      text='Против телефона (в процессе)'
       class='button'
     />
-    -->
 
-    <AdsBanner/>
+    <!-- DONATE -->
+    <Label
+      text='Поддержать'
+      class='donate'
+    />
+
+    <Button
+      @tap='donate'
+      text='Денежный перевод'
+      class='button'
+    />
+
+    <Button
+      @tap='showAds'
+      text='Показать рекламу'
+      class='button'
+    />
+
+    <AdsBanner v-if='isShowBanner'/>
+    <AdsInterstitial v-if='isShowInterstitial'/>
   </StackLayout>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import { openUrl } from 'tns-core-modules/utils/utils';
+
+// todo дальнейшие действия для игры по сети залогиненного пользователя
 export default {
   name: 'WelcomeMain',
 
+  data() {
+    return {
+      isShowBanner: true,
+      isShowInterstitial: false,
+      cutaway: 'https://money.yandex.ru/to/410011000753520/100',
+    };
+  },
+
+  destroyed() {
+    this.hideBanner();
+  },
+
   methods: {
+    hideBanner() {
+      this.isShowBanner = false;
+    },
+
     login() {
       this.$router.push({ name: 'AuthLogin' });
     },
@@ -55,8 +100,28 @@ export default {
       this.$router.push({ name: 'AuthRegistration' });
     },
 
-    game() {
+    vsMan() {
       this.$router.push({ name: 'Game' });
+    },
+
+    vsPhone() {
+      // this.$router.push({ name: 'Game' });
+    },
+
+    donate() {
+      openUrl(this.cutaway);
+    },
+
+    showAds() {
+      this.isShowInterstitial = true;
+    },
+  },
+
+  computed: {
+    ...mapState('user', ['isLogged', 'user']),
+
+    greeting() {
+      return `Приветствую тебя ${user.nickname}!`;
     },
   },
 };
@@ -73,14 +138,16 @@ export default {
   background-color: $light;
 }
 
+.greeting,
 .online,
-.offline {
-  padding-left: 15rem;
+.offline,
+.donate {
   font-size: 18rem;
   color: $lightest;
 }
 
-.offline {
+.offline,
+.donate {
   margin-top: 18rem;
 }
 

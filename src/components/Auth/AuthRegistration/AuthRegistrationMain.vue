@@ -2,12 +2,14 @@
   <StackLayout class='AuthRegistrationMain'>
     <TextField
       v-model.trim='nickname'
+      @focus='hideBanner'
       hint='Уникальное имя'
       class='nickname'
     />
 
     <TextField
       v-model.trim='password'
+      @focus='hideBanner'
       @returnPress='registration'
       secure='true'
       hint='Надежный пароль'
@@ -39,7 +41,7 @@
       </StackLayout>
     </StackLayout>
 
-    <AdsBanner/>
+    <AdsBanner v-if='isShowBanner'/>
   </StackLayout>
 </template>
 
@@ -52,15 +54,25 @@ export default {
       nickname: '',
       password: '',
       isLoading: false,
+      isShowBanner: true,
     };
   },
 
   methods: {
+    hideBanner() {
+      this.isShowBanner = false;
+    },
+
+    showBanner() {
+      this.isShowBanner = true;
+    },
+
     async registration() {
       if (!this.isCompleted()) { return; }
 
       try {
         this.isLoading = true;
+        this.showBanner();
 
         await this.$store.dispatch('user/registration', {
           nickname: this.nickname,

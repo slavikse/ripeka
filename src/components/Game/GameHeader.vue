@@ -158,6 +158,7 @@ export default {
           break;
 
         default:
+          // todo сообщение на сервер
           console.log('Что то пошло не так!');
       }
 
