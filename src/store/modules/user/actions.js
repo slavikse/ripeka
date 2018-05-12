@@ -20,9 +20,12 @@ export default {
     }
   },
 
+  // todo при ошибке здесь, внешний код не прерывается...
   async registration({ commit }, body) {
     const { data } = await Vue.axios.post('/users', body);
     delete body.password;
+
+    console.log('data', data);
 
     if (data.success) {
       commit('REGISTRATION', body);

@@ -18,7 +18,7 @@ function auth(state, user, token) {
 
   state.user = user;
   state.token = token;
-  state.isLogged = true;
+  state.is_logged = true;
 }
 
 export default {
@@ -41,7 +41,7 @@ export default {
 
     state.user = {};
     state.token = '';
-    state.isLogged = false;
+    state.is_logged = false;
 
     Vue.router.push({ name: 'Welcome' });
   },

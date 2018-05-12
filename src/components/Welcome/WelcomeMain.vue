@@ -2,14 +2,21 @@
   <StackLayout class='WelcomeMain'>
     <!-- ONLINE -->
     <Label
+      v-if='is_logged'
+      :text='greeting'
+      class='greeting'
+    />
+    <Label
+      v-else
       text='По сети'
       class='online'
     />
 
-    <StackLayout v-if='isLogged'>
-      <Label
-        :text='greeting'
-        class='greeting'
+    <StackLayout v-if='is_logged'>
+      <Button
+        @tap='find'
+        text='Поиск соперника'
+        class='button'
       />
     </StackLayout>
     <StackLayout v-else>
@@ -92,6 +99,10 @@ export default {
       this.isShowBanner = false;
     },
 
+    find() {
+      console.log('Поищу...');
+    },
+
     login() {
       this.$router.push({ name: 'AuthLogin' });
     },
@@ -105,6 +116,7 @@ export default {
     },
 
     vsPhone() {
+      console.log('Поиграешь...');
       // this.$router.push({ name: 'Game' });
     },
 
@@ -118,10 +130,11 @@ export default {
   },
 
   computed: {
-    ...mapState('user', ['isLogged', 'user']),
+    ...mapState('user', ['is_logged', 'user']),
 
     greeting() {
-      return `Приветствую тебя ${user.nickname}!`;
+      const name = Object.keys(this.user).length > 0 ? this.user.nickname : 'незнакомец';
+      return `В сети! Привет ${name}!`;
     },
   },
 };
@@ -138,12 +151,16 @@ export default {
   background-color: $light;
 }
 
-.greeting,
 .online,
+.greeting,
 .offline,
 .donate {
   font-size: 18rem;
   color: $lightest;
+}
+
+.greeting {
+  font-weight: bold;
 }
 
 .offline,

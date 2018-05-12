@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="ns_primary">#289062</color>
+  <!-- top bar -->
   <color name="ns_primaryDark">#289062</color>
+  <color name="ns_primary">#289062</color>
+  <!-- 3 точки в actionBar -->
+  <color name="ns_dark">#43b883</color>
+  <!-- курсор -->
   <color name="ns_accent">#289062</color>
-  <color name="ns_blue">#289062</color>
 </resources>
