@@ -54,7 +54,7 @@ export default {
     },
 
     taped(index) {
-      this.$store.dispatch('field/taped', index);
+      // this.$store.dispatch('field/taped', index);
     },
 
     async moving(index) {

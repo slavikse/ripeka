@@ -3,7 +3,7 @@ import Vue from 'nativescript-vue';
 export default {
   logged({ commit }, token) {
     try {
-      const user = JSON.parse(localStorage.getItem('user'));
+      // const user = JSON.parse(localStorage.getItem('user'));
       commit('LOGGED', { user, token });
     } catch (err) {
       // todo в базу данных на сервер.

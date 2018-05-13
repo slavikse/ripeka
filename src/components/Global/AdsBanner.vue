@@ -40,28 +40,36 @@ export default {
 
   methods: {
     createBanner() {
-      // Вываливает неотлавливаемые ошибки.
-      admob.createBanner({
-        view: 'banner',
-        testing: this.isDevelopment,
-        size: admob.AD_SIZE.SMART_BANNER,
-        androidBannerId: this.isDevelopment ? this.testBannerID : this.realBannerID,
-        margins: { bottom: 0 },
-      }).then(() => {
-        console.log('DONE: AdsBanner/createBanner');
-      }, (err) => {
-        console.error('ERROR: AdsBanner/createBanner', err);
-      });
+      try {
+        // Вываливает неотлавливаемые ошибки.
+        admob.createBanner({
+          view: 'banner',
+          testing: this.isDevelopment,
+          size: admob.AD_SIZE.SMART_BANNER,
+          androidBannerId: this.isDevelopment ? this.testBannerID : this.realBannerID,
+          margins: { bottom: 0 },
+        }).then(() => {
+          console.log('DONE: AdsBanner/createBanner');
+        }, (err) => {
+          console.error('ERROR: AdsBanner/createBanner', err);
+        });
+      } catch (err) {
+        console.error('', err);
+      }
     },
 
     hideBanner() {
       clearTimeout(this.timerID);
 
-      admob.hideBanner().then(() => {
-        console.log('DONE: AdsBanner/hideBanner');
-      }, (err) => {
-        console.error('ERROR: AdsBanner/hideBanner', err);
-      });
+      try {
+        admob.hideBanner().then(() => {
+          console.log('DONE: AdsBanner/hideBanner');
+        }, (err) => {
+          console.error('ERROR: AdsBanner/hideBanner', err);
+        });
+      } catch (err) {
+        console.error('', err);
+      }
     },
   },
 };

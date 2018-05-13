@@ -2,8 +2,8 @@
 <manifest
   xmlns:android="http://schemas.android.com/apk/res/android"
   package="__PACKAGE__"
-  android:versionCode="00050"
-  android:versionName="0.5.0"
+  android:versionCode="00052"
+  android:versionName="0.5.2"
 >
   <supports-screens
     android:smallScreens="true"

@@ -13,7 +13,7 @@
       />
     </GridLayout>
 
-    <AdsBanner v-if='isShowBanner'/>
+    <!--<AdsBanner v-if='isShowBanner'/>-->
   </StackLayout>
 </template>
 

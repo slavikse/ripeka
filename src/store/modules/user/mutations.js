@@ -3,15 +3,15 @@ import Vue from 'nativescript-vue';
 // todo WIP
 const token = 'forever';
 
-function setLocalStorage(user, token) {
-  localStorage.setItem('user', JSON.stringify(user));
-  localStorage.setItem('token', token);
-}
+// function setLocalStorage(user, token) {
+//   localStorage.setItem('user', JSON.stringify(user));
+//   localStorage.setItem('token', token);
+// }
 
-function clearLocalStorage() {
-  localStorage.removeItem('user');
-  localStorage.removeItem('token');
-}
+// function clearLocalStorage() {
+//   localStorage.removeItem('user');
+//   localStorage.removeItem('token');
+// }
 
 function auth(state, user, token) {
   Vue.axios.defaults.headers.common.token = token;
@@ -28,16 +28,16 @@ export default {
 
   LOGIN(state, user) {
     auth(state, user, token);
-    setLocalStorage(user, token);
+    // setLocalStorage(user, token);
   },
 
   REGISTRATION(state, user) {
     auth(state, user, token);
-    setLocalStorage(user, token);
+    // setLocalStorage(user, token);
   },
 
   LOGOUT(state) {
-    clearLocalStorage();
+    // clearLocalStorage();
 
     state.user = {};
     state.token = '';

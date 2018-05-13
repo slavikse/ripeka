@@ -67,14 +67,16 @@
       class='button'
     />
 
+    <!--
     <Button
       @tap='showAds'
       text='Показать рекламу'
       class='button'
     />
+    -->
 
-    <AdsBanner v-if='isShowBanner'/>
-    <AdsInterstitial v-if='isShowInterstitial'/>
+    <!--<AdsBanner v-if='isShowBanner'/>-->
+    <!--<AdsInterstitial v-if='isShowInterstitial'/>-->
   </StackLayout>
 </template>
 

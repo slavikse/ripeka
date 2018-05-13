@@ -8,12 +8,12 @@ Vue.use(Vuex);
 
 const strict = global.ENV_MODE === 'development';
 const store = new Vuex.Store({ modules, strict });
-const token = localStorage.getItem('token');
+// const token = localStorage.getItem('token');
 
 // Проверка авторизации.
-if (token) {
-  store.dispatch('user/logged', token);
-}
+// if (token) {
+//   store.dispatch('user/logged', token);
+// }
 
 hooks(modules.constant.state.api_uri);
 

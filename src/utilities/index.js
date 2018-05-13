@@ -1,2 +1,2 @@
 export deepClone from './deepClone';
-export noise from './noise';
+// export noise from './noise';
