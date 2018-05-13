@@ -1,0 +1,5 @@
+Выполнить сборку npm run build, далее в папке dist выполнить
+tns build android --release --key-store-path <path-to-your-keystore> --key-store-password <your-key-store-password> --key-store-alias <your-alias-name> --key-store-alias-password <your-alias-password>
+
+Тут расписано:
+https://docs.nativescript.org/publishing/publishing-android-apps
